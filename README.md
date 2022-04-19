@@ -27,7 +27,11 @@ class { 'thumbor':
 }
 ```
 
-Next go on your favorite shell browser (like curl or wget) and open http://127.0.0.1:8000/unsafe/200x200/https://puppet.com/themes/hoverboard/images/puppet-logo/puppet-logo-amber-white-lg.png (as an example) from the same machine as to where you applied the puppet code.
+Next run a simple test on the same machine:
+
+```
+curl -v http://127.0.0.1:8000/unsafe/200x200/https://puppet.com/images/logos/puppet-logo-black.svg
+```
 
 ### Reference
 
