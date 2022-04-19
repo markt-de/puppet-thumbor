@@ -1,129 +1,73 @@
-require 'rspec-puppet'
+# frozen_string_literal: true
+
+RSpec.configure do |c|
+  c.mock_with :rspec
+end
+
 require 'puppetlabs_spec_helper/module_spec_helper'
-require 'puppet/indirector/catalog/compiler'
 require 'rspec-puppet-facts'
+
+require 'spec_helper_local' if File.file?(File.join(File.dirname(__FILE__), 'spec_helper_local.rb'))
 
 include RspecPuppetFacts
 
-fixture_path = File.expand_path(File.join(__FILE__, '..', 'fixtures'))
+default_facts = {
+  puppetversion: Puppet.version,
+  facterversion: Facter.version,
+}
 
-# Magic to add a catalog.exported_resources accessor
-class Puppet::Resource::Catalog::Compiler
-  alias_method :filter_exclude_exported_resources, :filter
-  def filter(catalog)
-    filter_exclude_exported_resources(catalog).tap do |filtered|
-      # Every time we filter a catalog, add a .exported_resources to it.
-      filtered.define_singleton_method(:exported_resources) do
-        # The block passed to filter returns `false` if it wants to keep a resource. Go figure.
-        catalog.filter { |r| !r.exported? }
-      end
-    end
+default_fact_files = [
+  File.expand_path(File.join(File.dirname(__FILE__), 'default_facts.yml')),
+  File.expand_path(File.join(File.dirname(__FILE__), 'default_module_facts.yml')),
+]
+
+default_fact_files.each do |f|
+  next unless File.exist?(f) && File.readable?(f) && File.size?(f)
+
+  begin
+    default_facts.merge!(YAML.safe_load(File.read(f), [], [], true))
+  rescue => e
+    RSpec.configuration.reporter.message "WARNING: Unable to load #{f}: #{e}"
   end
 end
 
-module Support
-  module ExportedResources
-    # Get exported resources as a catalog. Compatible with all catalog matchers, e.g.
-    # `expect(exported_resources).to contain_myexportedresource('name').with_param('value')`
-    def exported_resources
-      # Catalog matchers expect something that can receive .call
-      proc { subject.call.exported_resources }
-    end
-  end
-end
-
-def get_spec_fixtures_dir
-  spec_dir = File.expand_path(File.dirname(__FILE__) + '/fixtures')
-  raise "The directory #{spec_dir} does not exist" unless Dir.exists? spec_dir
-  spec_dir
-end
-
-def read_fixture_file filename
-  filename = get_spec_fixtures_dir + "/#{filename}"
-  raise "The fixture file #{filename} doesn't exist" unless File.exists? filename
-  File.read(filename)
-end
-
-def centos_facts
-  {
-    :operatingsystem => 'CentOS',
-    :osfamily        => 'RedHat',
-    :kernel          => 'Linux',
-  }
-end
-
-def debian_8_facts
-  {
-    :operatingsystem           => 'Debian',
-    :osfamily                  => 'Debian',
-    :operatingsystemmajrelease => '8',
-    :kernel                    => 'Linux',
-  }
-end
-
-def debian_9_facts
-  {
-    :operatingsystem           => 'Debian',
-    :osfamily                  => 'Debian',
-    :operatingsystemmajrelease => '9',
-    :kernel                    => 'Linux',
-  }
-end
-
-def centos_6_facts
-  {
-    :operatingsystem           => 'CentOS',
-    :osfamily                  => 'RedHat',
-    :operatingsystemmajrelease => '6',
-    :kernel                    => 'Linux',
-  }
-end
-
-def centos_7_facts
-  {
-    :operatingsystem           => 'CentOS',
-    :osfamily                  => 'RedHat',
-    :operatingsystemmajrelease => '7',
-    :kernel                    => 'Linux',
-  }
-end
-
-def ubuntu_1404_facts
-  {
-    :operatingsystem           => 'Ubuntu',
-    :osfamily                  => 'Debian',
-    :operatingsystemmajrelease => '14.04',
-    :kernel                    => 'Linux',
-  }
-end
-
-def ubuntu_1604_facts
-  {
-    :operatingsystem           => 'Ubuntu',
-    :osfamily                  => 'Debian',
-    :operatingsystemmajrelease => '16.04',
-    :kernel                    => 'Linux',
-  }
-end
-
-def archlinux_facts
-  {
-    :operatingsystem => 'Archlinux',
-    :osfamily        => 'Archlinux',
-    :kernel          => 'Linux',
-  }
+# read default_facts and merge them over what is provided by facterdb
+default_facts.each do |fact, value|
+  add_custom_fact fact, value
 end
 
 RSpec.configure do |c|
-  c.module_path = File.join(fixture_path, 'modules')
-  c.manifest_dir = File.join(fixture_path, 'manifests')
+  c.default_facts = default_facts
+  c.before :each do
+    # set to strictest setting for testing
+    # by default Puppet runs at warning level
+    Puppet.settings[:strict] = :warning
+    Puppet.settings[:strict_variables] = true
+  end
+  c.filter_run_excluding(bolt: true) unless ENV['GEM_BOLT']
+  c.after(:suite) do
+  end
+
+  # Filter backtrace noise
+  backtrace_exclusion_patterns = [
+    %r{spec_helper},
+    %r{gems},
+  ]
+
+  if c.respond_to?(:backtrace_exclusion_patterns)
+    c.backtrace_exclusion_patterns = backtrace_exclusion_patterns
+  elsif c.respond_to?(:backtrace_clean_patterns)
+    c.backtrace_clean_patterns = backtrace_exclusion_patterns
+  end
 end
 
-# put local configuration and setup into spec_helper_local
-begin
-  require 'spec_helper_local'
-rescue LoadError
+# Ensures that a module is defined
+# @param module_name Name of the module
+def ensure_module_defined(module_name)
+  module_name.split('::').reduce(Object) do |last_module, next_module|
+    last_module.const_set(next_module, Module.new) unless last_module.const_defined?(next_module, false)
+    last_module.const_get(next_module, false)
+  end
 end
 
-at_exit { RSpec::Puppet::Coverage.report! }
-
+# 'spec_overrides' from sync.yml will appear below this line
