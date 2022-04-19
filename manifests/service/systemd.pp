@@ -1,13 +1,11 @@
-define thumbor::service::systemd
-(
-  String $port = String("${name}"),
-)
-{
+define thumbor::service::systemd (
+  String $port = $name,
+) {
   $service_name = "thumbor@${port}"
 
   service { $service_name:
-    enable    => true,
     ensure    => 'running',
+    enable    => true,
     require   => Systemd::Unit_file['thumbor@.service'],
     subscribe => [ Class['systemd::systemctl::daemon_reload'], File["${thumbor::apppath}/thumbor.conf"] ],
   }

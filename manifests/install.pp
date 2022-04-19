@@ -1,8 +1,4 @@
-
-class thumbor::install
-(
-)
-{
+class thumbor::install {
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
@@ -83,7 +79,7 @@ class thumbor::install
     before     => Anchor['thumbor::install::end'],
   }
 
-  python::pip { [ $thumbor::extentions ]: 
+  python::pip { [ $thumbor::extentions ]:
     ensure     => $thumbor::package_ensure,
     virtualenv => $venv,
     proxy      => $thumbor::pip_proxyserver,

@@ -25,24 +25,23 @@
 #
 #
 class thumbor (
-  Hash                                $config,
-  Enum['present', 'absent']           $ensure              = $thumbor::params::ensure,
-  Optional[String]                    $security_key        = $thumbor::params::security_key,
-  String                              $listen              = $thumbor::params::listen,
-  Variant[Array[String],String]       $ports               = $thumbor::params::ports,
-  Optional[String]                    $virtualenv_path     = $thumbor::params::virtualenv_path,
-  String                              $package_name        = $thumbor::params::package_name,
-  Enum['present', 'absent', 'latest'] $package_ensure      = $thumbor::params::package_ensure,
-  Optional[String]                    $pip_proxyserver     = $thumbor::params::pip_proxyserver,
-  Boolean                             $ensure_user         = $thumbor::params::ensure_user,
-  String                              $user                = $thumbor::params::user,
-  Boolean                             $ensure_group        = $thumbor::params::ensure_group,
-  String                              $group               = $thumbor::params::group,
-  Variant[Array[String],String]       $extentions          = $thumbor::params::extentions,
-  Array                               $additional_packages = $thumbor::params::additional_packages,
-  Boolean                             $manage_python       = $thumbor::params::manage_python,
-) inherits thumbor::params
-{
+  Hash $config,
+  Enum['present', 'absent'] $ensure = $thumbor::params::ensure,
+  Optional[String] $security_key = $thumbor::params::security_key,
+  String $listen = $thumbor::params::listen,
+  Variant[Array[String],String] $ports = $thumbor::params::ports,
+  Optional[String] $virtualenv_path = $thumbor::params::virtualenv_path,
+  String $package_name = $thumbor::params::package_name,
+  Enum['present', 'absent', 'latest'] $package_ensure = $thumbor::params::package_ensure,
+  Optional[String] $pip_proxyserver = $thumbor::params::pip_proxyserver,
+  Boolean $ensure_user = $thumbor::params::ensure_user,
+  String $user = $thumbor::params::user,
+  Boolean $ensure_group = $thumbor::params::ensure_group,
+  String $group = $thumbor::params::group,
+  Variant[Array[String],String] $extentions = $thumbor::params::extentions,
+  Array $additional_packages = $thumbor::params::additional_packages,
+  Boolean $manage_python = $thumbor::params::manage_python,
+) inherits thumbor::params {
   $apppath = $virtualenv_path ? {
     undef   => '/usr/local/',
     default => "${virtualenv_path}/",
@@ -53,5 +52,4 @@ class thumbor (
   -> class{ 'thumbor::config': }
   -> class{ 'thumbor::service': }
   -> anchor { 'thumbor::end': }
-
 }

@@ -1,23 +1,20 @@
-
-class thumbor::params
-(
-  Enum['present', 'absent']     $ensure           = 'present',
-  Optional[String]              $security_key     = undef,
-  String                        $listen           = '127.0.0.1',
-  Variant[Array[String],String] $ports            = [ '8000' ],
-  Optional[String]              $virtualenv_path  = undef,
-  String                        $package_name     = 'thumbor',
-  String                        $package_ensure   = $ensure,
-  Optional[String]              $pip_proxyserver  = undef,
-  Boolean                       $ensure_user      = true,
-  String                        $user             = 'thumbor',
-  Boolean                       $ensure_group     = true,
-  String                        $group            = 'thumbor',
-  Variant[Array[String],String] $extentions       = [],
-  Hash                          $default_options  = {},
-  Boolean                       $manage_python    = true,
-)
-{
+class thumbor::params (
+  Enum['present', 'absent'] $ensure = 'present',
+  Optional[String] $security_key = undef,
+  String $listen = '127.0.0.1',
+  Variant[Array[String],String] $ports = [ '8000' ],
+  Optional[String] $virtualenv_path = undef,
+  String $package_name = 'thumbor',
+  String $package_ensure = $ensure,
+  Optional[String] $pip_proxyserver = undef,
+  Boolean $ensure_user = true,
+  String $user = 'thumbor',
+  Boolean $ensure_group = true,
+  String $group = 'thumbor',
+  Variant[Array[String],String] $extentions = [],
+  Hash $default_options = {},
+  Boolean $manage_python = true,
+) {
   case $facts['os']['family'] {
     'Debian': {
       $additional_packages = ['build-essential',
