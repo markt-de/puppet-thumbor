@@ -1,12 +1,12 @@
 {
-  "name": "puppet-thumbor",
-  "version": "0.1.0",
-  "author": "TMGMedia",
-  "summary": "Installs, configures and manages Thumbor installations",
+  "name": "fraenki-thumbor",
+  "version": "1.0.0",
+  "author": "markt.de",
+  "summary": "Install, configure and manage Thumbor installations",
   "license": "Apache-2.0",
-  "source": "https://github.com/TMGMedia/puppet-thumbor",
-  "project_page": "https://github.com/TMGMedia/puppet-thumbor",
-  "issues_url": "https://github.com/TMGMedia/puppet-thumbor/issues",
+  "source": "https://github.com/markt-de/puppet-thumbor",
+  "project_page": "https://github.com/markt-de/puppet-thumbor",
+  "issues_url": "https://github.com/markt-de/puppet-thumbor/issues",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",

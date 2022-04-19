@@ -1,29 +1,23 @@
-[puppet-thumbor](https://github.com/hp197/puppet-thumbor)
-==============
+# puppet-thumbor
+
+[![Build Status](https://travis-ci.org/markt-de/puppet-thumbor.png?branch=main)](https://travis-ci.org/markt-de/puppet-thumbor)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/fraenki/thumbor.svg)](https://forge.puppetlabs.com/fraenki/thumbor)
+[![Puppet Forge](https://img.shields.io/puppetforge/dt/fraenki/thumbor.svg)](https://forge.puppetlabs.com/fraenki/thumbor)
 
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Dependencies - Where this module depends on](#dependencies)
-3. [Usage - Configuration options and additional functionality](#usage)
-4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+1. [Usage](#usage)
+1. [Reference](#reference)
+1. [Development](#development)
 
 ## Overview
 
-Puppet module to deploy and manage Thumbor http://github.com/globocom/thumbor.
-
-## Dependencies
-
-This module depends on: 
-
-* [puppetlabs/stdlib](https://forge.puppetlabs.com/puppetlabs/stdlib) for standard libraries.
-* [stankevich/python](https://github.com/stankevich/puppet-python) for python virtualenv and pip installation.
+Puppet module to deploy and manage [Thumbor](https://github.com/thumbor/thumbor/).
 
 ## Usage
 
-### Short demo
+### Basic usage
 
 Install Thumbor in your environment:
 
@@ -164,16 +158,8 @@ Specifies a list of additional packages that are required for thumbor or any of 
 * [`thumbor::install`] Manages the installation of the thumbor packages
 * [`thumbor::service`] Manages the installation of the thumbor services
 
-## Limitations
-
-This module is tested on the following platforms:
-
-* Debian 9 (stretch)
-
-It is tested with the OSS version of Puppet (>= 4.10.0) only.
-
 ## Development
 
 ### Contributing
 
-Please read CONTRIBUTING.md for full details on contributing to this project.
+Please use the GitHub issues functionality to report any bugs or requests for new features. Feel free to fork and submit pull requests for potential contributions.
