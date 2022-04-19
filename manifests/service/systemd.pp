@@ -1,3 +1,8 @@
+# @summary Setup a Thumbor service instance
+#
+# @param port
+#   The port Thumbor listens on.
+#
 define thumbor::service::systemd (
   String $port = $name,
 ) {
