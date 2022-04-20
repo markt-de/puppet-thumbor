@@ -5,14 +5,14 @@ class thumbor::config {
 
   anchor { 'thumbor::config::begin': }
   -> file { "${thumbor::apppath}/thumbor.key":
-    ensure  => $thumbor::package_ensure,
+    ensure  => $thumbor::ensure,
     content => $thumbor::security_key,
     owner   => $thumbor::user,
     group   => $thumbor::group,
     mode    => '0600',
   }
   -> file { "${thumbor::apppath}/thumbor.conf":
-    ensure  => $thumbor::package_ensure,
+    ensure  => $thumbor::ensure,
     content => template('thumbor/thumbor.conf.erb'),
     owner   => $thumbor::user,
     group   => $thumbor::group,

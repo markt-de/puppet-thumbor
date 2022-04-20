@@ -1,7 +1,7 @@
 # @summary Install and configure Thumbor
 #
 # @param ensure
-#   If the thumbor application is installed or forcefully removed, default present
+#   Controls the installation and removal of application components (files, user, group), default present
 #
 # @param security_key
 #   Security key to use in thumbor, default undef

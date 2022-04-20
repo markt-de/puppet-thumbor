@@ -5,7 +5,7 @@ class thumbor::install {
 
   if $thumbor::manage_group {
     group { $thumbor::group:
-      ensure  => present,
+      ensure  => $thumbor::ensure,
       system  => true,
       require => Anchor['thumbor::install::begin'],
       before  => Python::Pyvenv[$thumbor::virtualenv_path],
@@ -19,6 +19,7 @@ class thumbor::install {
     }
 
     user { $thumbor::user:
+      ensure  => $thumbor::ensure,
       system  => true,
       gid     => $thumbor::group,
       home    => $homepath,

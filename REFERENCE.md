@@ -52,7 +52,7 @@ The following parameters are available in the `thumbor` class:
 
 Data type: `Enum['present', 'absent']`
 
-If the thumbor application is installed or forcefully removed, default present
+Controls the installation and removal of application components (files, user, group), default present
 
 ##### <a name="security_key"></a>`security_key`
 
