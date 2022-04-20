@@ -1,0 +1,15 @@
+---
+thumbor::additional_packages:
+  - 'automake'
+  - 'gcc'
+  - 'gcc-c++'
+  - 'gifsicle'
+  - 'glib2'
+  - 'libcurl-devel'
+  - 'libjpeg-turbo'
+  - 'libSM'
+  - 'libXext'
+  - 'libXrender'
+  - 'make'
+  - 'openssl-devel'
+  - 'openssl-libs'

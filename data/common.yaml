@@ -1,1 +1,18 @@
---- {}
+---
+thumbor::config: {}
+thumbor::default_options: {}
+thumbor::ensure_group: true
+thumbor::ensure: 'present'
+thumbor::ensure_user: true
+thumbor::extentions: []
+thumbor::group: 'thumbor'
+thumbor::listen: '127.0.0.1'
+thumbor::manage_python: true
+thumbor::package_ensure:
+thumbor::package_name: 'thumbor'
+thumbor::pip_proxyserver: ~
+thumbor::ports:
+  - '8000'
+thumbor::security_key: ~
+thumbor::user: 'thumbor'
+thumbor::virtualenv_path: ~

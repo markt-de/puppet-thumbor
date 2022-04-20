@@ -1,0 +1,16 @@
+---
+lookup_options:
+  # Usually we want to REPLACE (not merge) advanced params
+  "^thumbor::additional_packages":
+    merge:
+      strategy: first
+  "^thumbor::extentions":
+    merge:
+      strategy: first
+  "^thumbor::ports":
+    merge:
+      strategy: first
+  # Use deep merge for all other params
+  "^thumbor::.*":
+    merge:
+      strategy: deep

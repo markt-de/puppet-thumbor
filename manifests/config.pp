@@ -4,7 +4,7 @@ class thumbor::config {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  $_default_config = deep_merge($thumbor::config, $thumbor::params::default_options)
+  $_default_config = deep_merge($thumbor::config, $thumbor::default_options)
 
   anchor { 'thumbor::config::begin': }
   -> file { "${thumbor::apppath}/thumbor.key":

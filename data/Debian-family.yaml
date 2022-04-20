@@ -1,0 +1,11 @@
+---
+thumbor::additional_packages:
+  - 'build-essential'
+  - 'gifsicle'
+  - 'libcurl4-openssl-dev'
+  - 'libglib2.0-0'
+  - 'libjpeg-turbo-progs'
+  - 'libsm6'
+  - 'libssl-dev'
+  - 'libxext6'
+  - 'libxrender1'
