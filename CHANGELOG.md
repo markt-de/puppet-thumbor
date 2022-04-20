@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
+* add new parameter `$version` to control the version of Thumbor
 
 ### Fixed
 * fix compatibility with voxpupuli/python 6.0.0
@@ -15,9 +16,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 * ensure that the service is always 'running'
 * migrate `params.pp` to module data
-* rename parameter `ensure_user` to `manage_user`
-* rename parameter `ensure_group` to `manage_group`
-* use the `ensure` param for files, user, group, etc.
+* rename parameter `$ensure_user` to `$manage_user`
+* rename parameter `$ensure_group` to `$manage_group`
+* use the `$ensure` parameter for files, user, group, etc.
 
 ### Removed
 

@@ -62,7 +62,7 @@ class thumbor::install {
   }
 
   python::pip { $thumbor::package_name:
-    ensure     => $thumbor::package_ensure,
+    ensure     => $thumbor::version,
     virtualenv => $venv,
     proxy      => $thumbor::pip_proxyserver,
     require    => [ Package[$thumbor::additional_packages], Anchor['thumbor::install::virtualenv'] ],

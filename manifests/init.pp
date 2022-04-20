@@ -19,7 +19,7 @@
 #   Package name of the thumbor application as found in pip, default thumbor
 #
 # @param package_ensure
-#   Control the ensure on pip, default $ensure ('present')
+#   Control the ensure on additional pip installations, default $ensure ('present')
 #
 # @param pip_proxyserver
 #   The full url (including credentials) to a proxy server or undef to not use one at all, default undef
@@ -45,6 +45,9 @@
 # @param manage_python
 #   If we control the installation of Python, default true
 #
+# @param version
+#   Version of Thumbor that should be installed, default 'present'
+#
 class thumbor (
   Hash $config,
   Enum['present', 'absent'] $ensure,
@@ -62,6 +65,7 @@ class thumbor (
   Variant[Array[String],String] $extentions,
   Array $additional_packages,
   Boolean $manage_python,
+  String $version,
 ) {
   $apppath = $virtualenv_path ? {
     undef   => '/usr/local/',

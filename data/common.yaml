@@ -15,4 +15,5 @@ thumbor::ports:
   - '8000'
 thumbor::security_key: ~
 thumbor::user: 'thumbor'
+thumbor::version: 'present'
 thumbor::virtualenv_path: ~

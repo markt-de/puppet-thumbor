@@ -45,6 +45,7 @@ The following parameters are available in the `thumbor` class:
 * [`extensions`](#extensions)
 * [`additional_packages`](#additional_packages)
 * [`manage_python`](#manage_python)
+* [`version`](#version)
 * [`config`](#config)
 * [`extentions`](#extentions)
 
@@ -88,7 +89,7 @@ Package name of the thumbor application as found in pip, default thumbor
 
 Data type: `Enum['present', 'absent', 'latest']`
 
-Control the ensure on pip, default $ensure ('present')
+Control the ensure on additional pip installations, default $ensure ('present')
 
 ##### <a name="pip_proxyserver"></a>`pip_proxyserver`
 
@@ -135,6 +136,12 @@ Specifies a list of additional packages that are required for thumbor or any of 
 Data type: `Boolean`
 
 If we control the installation of Python, default true
+
+##### <a name="version"></a>`version`
+
+Data type: `String`
+
+Version of Thumbor that should be installed, default 'present'
 
 ##### <a name="config"></a>`config`
 
