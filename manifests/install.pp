@@ -8,7 +8,7 @@ class thumbor::install {
       ensure  => present,
       system  => true,
       require => Anchor['thumbor::install::begin'],
-      before  => Python::Virtualenv[$thumbor::virtualenv_path],
+      before  => Python::Pyvenv[$thumbor::virtualenv_path],
     }
   }
 
@@ -23,7 +23,7 @@ class thumbor::install {
       gid     => $thumbor::group,
       home    => $homepath,
       require => Group[$thumbor::group],
-      before  => Python::Virtualenv[$thumbor::virtualenv_path],
+      before  => Python::Pyvenv[$thumbor::virtualenv_path],
     }
   }
 
@@ -39,10 +39,9 @@ class thumbor::install {
 
   if $thumbor::virtualenv_path {
     # Install thumbor in a virtualenv.
-    python::virtualenv { $thumbor::virtualenv_path:
+    python::pyvenv { $thumbor::virtualenv_path:
       ensure  => $thumbor::ensure,
       version => 'system',
-      proxy   => $thumbor::pip_proxyserver,
       owner   => $thumbor::user,
       group   => $thumbor::group,
       require => [ Class['python'] ],

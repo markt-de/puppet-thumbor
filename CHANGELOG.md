@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 ### Fixed
+* fix compatibility with voxpupuli/python 6.0.0
 
 ### Changed
 * ensure that the service is always 'running'
