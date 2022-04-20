@@ -1,9 +1,6 @@
 # @summary Setup configuration files for Thumbor
+# @api private
 class thumbor::config {
-  if $caller_module_name != $module_name {
-    fail("Use of private class ${name} by ${caller_module_name}")
-  }
-
   $_default_config = deep_merge($thumbor::config, $thumbor::default_options)
 
   anchor { 'thumbor::config::begin': }

@@ -9,11 +9,10 @@
 #### Public Classes
 
 * [`thumbor`](#thumbor): Install and configure Thumbor
-* [`thumbor::config`](#thumborconfig): Setup configuration files for Thumbor
-* [`thumbor::params`](#thumborparams)
 
 #### Private Classes
 
+* `thumbor::config`: Setup configuration files for Thumbor
 * `thumbor::install`: Install packages and dependencies for Thumbor
 * `thumbor::service`: Manage Thumbor system service and instances
 
@@ -55,15 +54,11 @@ Data type: `Enum['present', 'absent']`
 
 If the thumbor application is installed or forcefully removed, default present
 
-Default value: `$thumbor::params::ensure`
-
 ##### <a name="security_key"></a>`security_key`
 
 Data type: `Optional[String]`
 
 Security key to use in thumbor, default undef
-
-Default value: `$thumbor::params::security_key`
 
 ##### <a name="listen"></a>`listen`
 
@@ -71,15 +66,11 @@ Data type: `String`
 
 Host address to listen on, default 127.0.0.1
 
-Default value: `$thumbor::params::listen`
-
 ##### <a name="ports"></a>`ports`
 
 Data type: `Variant[Array[String],String]`
 
 Array of port strings to let thumbor listen on. This also controls how many instances are spinned up. Default: [ '8000' ]
-
-Default value: `$thumbor::params::ports`
 
 ##### <a name="virtualenv_path"></a>`virtualenv_path`
 
@@ -87,15 +78,11 @@ Data type: `Optional[String]`
 
 If we use virtualenv (false if undef) and what path we use as base, default undef
 
-Default value: `$thumbor::params::virtualenv_path`
-
 ##### <a name="package_name"></a>`package_name`
 
 Data type: `String`
 
 Package name of the thumbor application as found in pip, default thumbor
-
-Default value: `$thumbor::params::package_name`
 
 ##### <a name="package_ensure"></a>`package_ensure`
 
@@ -103,15 +90,11 @@ Data type: `Enum['present', 'absent', 'latest']`
 
 Control the ensure on pip, default $ensure ('present')
 
-Default value: `$thumbor::params::package_ensure`
-
 ##### <a name="pip_proxyserver"></a>`pip_proxyserver`
 
 Data type: `Optional[String]`
 
 The full url (including credentials) to a proxy server or undef to not use one at all, default undef
-
-Default value: `$thumbor::params::pip_proxyserver`
 
 ##### <a name="ensure_user"></a>`ensure_user`
 
@@ -119,15 +102,11 @@ Data type: `Boolean`
 
 If we control the installation of the user, default true
 
-Default value: `$thumbor::params::ensure_user`
-
 ##### <a name="user"></a>`user`
 
 Data type: `String`
 
 Name of the user to install (optional) and under which we run the thumbor service, default thumbor
-
-Default value: `$thumbor::params::user`
 
 ##### <a name="ensure_group"></a>`ensure_group`
 
@@ -135,15 +114,11 @@ Data type: `Boolean`
 
 If we control the installation of the group, default true
 
-Default value: `$thumbor::params::ensure_group`
-
 ##### <a name="group"></a>`group`
 
 Data type: `String`
 
 Name of the group to install (optional) and under which we run the thumbor service, default thumbor
-
-Default value: `$thumbor::params::group`
 
 ##### <a name="extensions"></a>`extensions`
 
@@ -155,15 +130,11 @@ Data type: `Array`
 
 Specifies a list of additional packages that are required for thumbor or any of it's dependencies.
 
-Default value: `$thumbor::params::additional_packages`
-
 ##### <a name="manage_python"></a>`manage_python`
 
 Data type: `Boolean`
 
 If we control the installation of Python, default true
-
-Default value: `$thumbor::params::manage_python`
 
 ##### <a name="config"></a>`config`
 
@@ -176,156 +147,6 @@ Data type: `Hash`
 Data type: `Variant[Array[String],String]`
 
 
-
-Default value: `$thumbor::params::extentions`
-
-### <a name="thumborconfig"></a>`thumbor::config`
-
-Setup configuration files for Thumbor
-
-### <a name="thumborparams"></a>`thumbor::params`
-
-The thumbor::params class.
-
-#### Parameters
-
-The following parameters are available in the `thumbor::params` class:
-
-* [`ensure`](#ensure)
-* [`security_key`](#security_key)
-* [`listen`](#listen)
-* [`ports`](#ports)
-* [`virtualenv_path`](#virtualenv_path)
-* [`package_name`](#package_name)
-* [`package_ensure`](#package_ensure)
-* [`pip_proxyserver`](#pip_proxyserver)
-* [`ensure_user`](#ensure_user)
-* [`user`](#user)
-* [`ensure_group`](#ensure_group)
-* [`group`](#group)
-* [`extentions`](#extentions)
-* [`default_options`](#default_options)
-* [`manage_python`](#manage_python)
-
-##### <a name="ensure"></a>`ensure`
-
-Data type: `Enum['present', 'absent']`
-
-
-
-Default value: `'present'`
-
-##### <a name="security_key"></a>`security_key`
-
-Data type: `Optional[String]`
-
-
-
-Default value: ``undef``
-
-##### <a name="listen"></a>`listen`
-
-Data type: `String`
-
-
-
-Default value: `'127.0.0.1'`
-
-##### <a name="ports"></a>`ports`
-
-Data type: `Variant[Array[String],String]`
-
-
-
-Default value: `[ '8000' ]`
-
-##### <a name="virtualenv_path"></a>`virtualenv_path`
-
-Data type: `Optional[String]`
-
-
-
-Default value: ``undef``
-
-##### <a name="package_name"></a>`package_name`
-
-Data type: `String`
-
-
-
-Default value: `'thumbor'`
-
-##### <a name="package_ensure"></a>`package_ensure`
-
-Data type: `String`
-
-
-
-Default value: `$ensure`
-
-##### <a name="pip_proxyserver"></a>`pip_proxyserver`
-
-Data type: `Optional[String]`
-
-
-
-Default value: ``undef``
-
-##### <a name="ensure_user"></a>`ensure_user`
-
-Data type: `Boolean`
-
-
-
-Default value: ``true``
-
-##### <a name="user"></a>`user`
-
-Data type: `String`
-
-
-
-Default value: `'thumbor'`
-
-##### <a name="ensure_group"></a>`ensure_group`
-
-Data type: `Boolean`
-
-
-
-Default value: ``true``
-
-##### <a name="group"></a>`group`
-
-Data type: `String`
-
-
-
-Default value: `'thumbor'`
-
-##### <a name="extentions"></a>`extentions`
-
-Data type: `Variant[Array[String],String]`
-
-
-
-Default value: `[]`
-
-##### <a name="default_options"></a>`default_options`
-
-Data type: `Hash`
-
-
-
-Default value: `{}`
-
-##### <a name="manage_python"></a>`manage_python`
-
-Data type: `Boolean`
-
-
-
-Default value: ``true``
 
 ## Defined types
 
