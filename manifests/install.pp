@@ -3,7 +3,7 @@
 class thumbor::install {
   anchor { 'thumbor::install::begin': }
 
-  if $thumbor::ensure_group {
+  if $thumbor::manage_group {
     group { $thumbor::group:
       ensure  => present,
       system  => true,
@@ -12,7 +12,7 @@ class thumbor::install {
     }
   }
 
-  if $thumbor::ensure_user {
+  if $thumbor::manage_user {
     $homepath = $thumbor::virtualenv_path ? {
       undef   => '/home/thumbor/',
       default => "${thumbor::virtualenv_path}/",

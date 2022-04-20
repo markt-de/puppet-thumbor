@@ -1,9 +1,9 @@
 ---
 thumbor::config: {}
 thumbor::default_options: {}
-thumbor::ensure_group: true
+thumbor::manage_group: true
 thumbor::ensure: 'present'
-thumbor::ensure_user: true
+thumbor::manage_user: true
 thumbor::extentions: []
 thumbor::group: 'thumbor'
 thumbor::listen: '127.0.0.1'

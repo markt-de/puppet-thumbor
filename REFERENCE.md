@@ -38,9 +38,9 @@ The following parameters are available in the `thumbor` class:
 * [`package_name`](#package_name)
 * [`package_ensure`](#package_ensure)
 * [`pip_proxyserver`](#pip_proxyserver)
-* [`ensure_user`](#ensure_user)
+* [`manage_user`](#manage_user)
 * [`user`](#user)
-* [`ensure_group`](#ensure_group)
+* [`manage_group`](#manage_group)
 * [`group`](#group)
 * [`extensions`](#extensions)
 * [`additional_packages`](#additional_packages)
@@ -96,7 +96,7 @@ Data type: `Optional[String]`
 
 The full url (including credentials) to a proxy server or undef to not use one at all, default undef
 
-##### <a name="ensure_user"></a>`ensure_user`
+##### <a name="manage_user"></a>`manage_user`
 
 Data type: `Boolean`
 
@@ -108,7 +108,7 @@ Data type: `String`
 
 Name of the user to install (optional) and under which we run the thumbor service, default thumbor
 
-##### <a name="ensure_group"></a>`ensure_group`
+##### <a name="manage_group"></a>`manage_group`
 
 Data type: `Boolean`
 

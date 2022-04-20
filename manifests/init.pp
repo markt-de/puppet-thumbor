@@ -24,13 +24,13 @@
 # @param pip_proxyserver
 #   The full url (including credentials) to a proxy server or undef to not use one at all, default undef
 #
-# @param ensure_user
+# @param manage_user
 #   If we control the installation of the user, default true
 #
 # @param user
 #   Name of the user to install (optional) and under which we run the thumbor service, default thumbor
 #
-# @param ensure_group
+# @param manage_group
 #   If we control the installation of the group, default true
 #
 # @param group
@@ -55,9 +55,9 @@ class thumbor (
   String $package_name,
   Enum['present', 'absent', 'latest'] $package_ensure,
   Optional[String] $pip_proxyserver,
-  Boolean $ensure_user,
+  Boolean $manage_user,
   String $user,
-  Boolean $ensure_group,
+  Boolean $manage_group,
   String $group,
   Variant[Array[String],String] $extentions,
   Array $additional_packages,
