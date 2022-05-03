@@ -66,19 +66,11 @@ class thumbor::install {
     before     => Anchor['thumbor::install::end'],
   }
 
-  python::pip { 'opencv-python':
-    ensure     => $thumbor::package_ensure,
-    virtualenv => $venv,
-    proxy      => $thumbor::pip_proxyserver,
-    require    => [ Package[$thumbor::additional_packages], Anchor['thumbor::install::virtualenv'] ],
-    before     => Anchor['thumbor::install::end'],
-  }
-
   python::pip { [ $thumbor::extentions ]:
     ensure     => $thumbor::package_ensure,
     virtualenv => $venv,
     proxy      => $thumbor::pip_proxyserver,
-    require    => Anchor['thumbor::install::virtualenv'],
+    require    => [ Package[$thumbor::additional_packages], Anchor['thumbor::install::virtualenv'] ],
     before     => Anchor['thumbor::install::end'],
   }
 

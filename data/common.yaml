@@ -1,12 +1,13 @@
 ---
 thumbor::config: {}
-thumbor::manage_group: true
 thumbor::ensure: 'present'
-thumbor::manage_user: true
-thumbor::extentions: []
+thumbor::extentions:
+  - 'opencv-python'
 thumbor::group: 'thumbor'
 thumbor::listen: '127.0.0.1'
+thumbor::manage_group: true
 thumbor::manage_python: true
+thumbor::manage_user: true
 thumbor::package_ensure: 'present'
 thumbor::package_name: 'thumbor'
 thumbor::pip_proxyserver: ~
