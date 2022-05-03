@@ -8,7 +8,7 @@ thumbor::extentions: []
 thumbor::group: 'thumbor'
 thumbor::listen: '127.0.0.1'
 thumbor::manage_python: true
-thumbor::package_ensure:
+thumbor::package_ensure: 'present'
 thumbor::package_name: 'thumbor'
 thumbor::pip_proxyserver: ~
 thumbor::ports:
