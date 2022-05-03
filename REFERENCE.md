@@ -30,6 +30,7 @@ Install and configure Thumbor
 
 The following parameters are available in the `thumbor` class:
 
+* [`config`](#config)
 * [`ensure`](#ensure)
 * [`security_key`](#security_key)
 * [`listen`](#listen)
@@ -46,8 +47,14 @@ The following parameters are available in the `thumbor` class:
 * [`additional_packages`](#additional_packages)
 * [`manage_python`](#manage_python)
 * [`version`](#version)
-* [`config`](#config)
 * [`extentions`](#extentions)
+
+##### <a name="config"></a>`config`
+
+Data type: `Hash`
+
+The configuration for Thumbor. Note the hash keys will be converted to upper case.
+You can refer to Thumbor wiki for configuration options: https://github.com/thumbor/thumbor/wiki/Configuration
 
 ##### <a name="ensure"></a>`ensure`
 
@@ -142,12 +149,6 @@ If we control the installation of Python, default true
 Data type: `String`
 
 Version of Thumbor that should be installed, default 'present'
-
-##### <a name="config"></a>`config`
-
-Data type: `Hash`
-
-
 
 ##### <a name="extentions"></a>`extentions`
 

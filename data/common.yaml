@@ -1,6 +1,5 @@
 ---
 thumbor::config: {}
-thumbor::default_options: {}
 thumbor::manage_group: true
 thumbor::ensure: 'present'
 thumbor::manage_user: true

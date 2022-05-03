@@ -1,7 +1,7 @@
 # @summary Setup configuration files for Thumbor
 # @api private
 class thumbor::config {
-  $_default_config = deep_merge($thumbor::config, $thumbor::default_options)
+  $_default_config = $thumbor::config
 
   anchor { 'thumbor::config::begin': }
   -> file { "${thumbor::apppath}/thumbor.key":

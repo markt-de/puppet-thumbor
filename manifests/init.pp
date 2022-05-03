@@ -1,5 +1,9 @@
 # @summary Install and configure Thumbor
 #
+# @param config
+#   The configuration for Thumbor. Note the hash keys will be converted to upper case.
+#   You can refer to Thumbor wiki for configuration options: https://github.com/thumbor/thumbor/wiki/Configuration
+#
 # @param ensure
 #   Controls the installation and removal of application components (files, user, group), default present
 #

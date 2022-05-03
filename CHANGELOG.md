@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * use the `$ensure` parameter for files, user, group, etc.
 
 ### Removed
+* remove parameter `$default_options` (use `$config` instead)
 
 ## v1.0.0
 Initial release before forking the module
