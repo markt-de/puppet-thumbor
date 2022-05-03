@@ -11,7 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * add new parameter `$version` to control the version of Thumbor
 
 ### Fixed
-* fix compatibility with voxpupuli/python 6.0.0
+* fix compatibility issues with voxpupuli/python >=6.0.0
+* fix compatibility issues with voxpupuli/systemd >=3.0.0
 
 ### Changed
 * ensure that the service is always 'running'
