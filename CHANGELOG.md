@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 * add new parameter `$version` to control the version of Thumbor
+* add new parameter `$python_config` to control Python installation options
 
 ### Fixed
 * fix compatibility issues with voxpupuli/python >=6.0.0

@@ -52,6 +52,9 @@
 # @param version
 #   Version of Thumbor that should be installed, default 'present'
 #
+# @param python_config
+#   Config for Python that should be used (if $manage_python is enabled)
+#
 class thumbor (
   Hash $config,
   Enum['present', 'absent'] $ensure,
@@ -69,6 +72,7 @@ class thumbor (
   Variant[Array[String],String] $extentions,
   Array $additional_packages,
   Boolean $manage_python,
+  Hash $python_config,
   String $version,
 ) {
   $apppath = $virtualenv_path ? {

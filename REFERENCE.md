@@ -47,6 +47,7 @@ The following parameters are available in the `thumbor` class:
 * [`additional_packages`](#additional_packages)
 * [`manage_python`](#manage_python)
 * [`version`](#version)
+* [`python_config`](#python_config)
 * [`extentions`](#extentions)
 
 ##### <a name="config"></a>`config`
@@ -149,6 +150,12 @@ If we control the installation of Python, default true
 Data type: `String`
 
 Version of Thumbor that should be installed, default 'present'
+
+##### <a name="python_config"></a>`python_config`
+
+Data type: `Hash`
+
+Config for Python that should be used (if $manage_python is enabled)
 
 ##### <a name="extentions"></a>`extentions`
 

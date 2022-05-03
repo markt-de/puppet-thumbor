@@ -30,11 +30,8 @@ class thumbor::install {
 
   if $thumbor::manage_python {
     class { 'python' :
-      version    => 'system',
-      pip        => 'present',
-      dev        => 'present',
-      virtualenv => 'present',
-      require    => Anchor['thumbor::install::begin'],
+      *       => $thumbor::python_config,
+      require => Anchor['thumbor::install::begin'],
     }
   }
 

@@ -12,6 +12,11 @@ thumbor::package_name: 'thumbor'
 thumbor::pip_proxyserver: ~
 thumbor::ports:
   - '8000'
+thumbor::python_config:
+  version: 'system'
+  pip: 'present'
+  dev: 'present'
+  virtualenv: 'present'
 thumbor::security_key: ~
 thumbor::user: 'thumbor'
 thumbor::version: 'present'
