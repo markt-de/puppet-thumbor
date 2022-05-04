@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * rename parameter `$ensure_user` to `$manage_user`
 * rename parameter `$ensure_group` to `$manage_group`
 * rename parameter `$extentions` to `$plugins`
+* rename parameter `$virtualenv_path` to `$venv_path`
 * use the `$ensure` parameter for files, user, group, etc.
 * add 'opencv-python' to `$extensions` (was previously hardcoded)
 * change default python version from 'system' to 'python3'

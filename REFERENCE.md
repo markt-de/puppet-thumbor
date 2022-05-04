@@ -52,7 +52,7 @@ The following parameters are available in the `thumbor` class:
 * [`update_enabled`](#update_enabled)
 * [`user`](#user)
 * [`version`](#version)
-* [`virtualenv_path`](#virtualenv_path)
+* [`venv_path`](#venv_path)
 
 ##### <a name="additional_packages"></a>`additional_packages`
 
@@ -182,7 +182,7 @@ Data type: `String`
 
 Version of Thumbor that should be installed, default 'present'
 
-##### <a name="virtualenv_path"></a>`virtualenv_path`
+##### <a name="venv_path"></a>`venv_path`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 

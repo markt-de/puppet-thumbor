@@ -59,17 +59,17 @@ It is possible to run Thumbor in a Python venv and configure various aspects of 
 
 ```
 class { 'thumbor':
-  manage_python   => true,
-  ports           => [ '8000' ],
-  python_config   => {
+  manage_python  => true,
+  ports          => [ '8000' ],
+  python_config  => {
     version => 'python3',
     pip     => 'present',
     dev     => 'present',
     venv    => 'present',
   },
-  security_key    => 'AAAAABBBBCCCCC111112222233333',
-  update_enabled  => true,
-  virtualenv_path => '/opt/thumbor_venv',
+  security_key   => 'AAAAABBBBCCCCC111112222233333',
+  update_enabled => true,
+  venv_path      => '/opt/thumbor_venv',
 }
 ```
 

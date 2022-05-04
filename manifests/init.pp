@@ -65,7 +65,7 @@
 # @param version
 #   Version of Thumbor that should be installed, default 'present'
 #
-# @param virtualenv_path
+# @param venv_path
 #   If we use virtualenv (false if undef) and what path we use as base, default undef
 #
 class thumbor (
@@ -90,11 +90,11 @@ class thumbor (
   Boolean $update_enabled,
   String $user,
   String $version,
-  Optional[Stdlib::Absolutepath] $virtualenv_path,
+  Optional[Stdlib::Absolutepath] $venv_path,
 ) {
-  $apppath = $virtualenv_path ? {
+  $apppath = $venv_path ? {
     undef   => $config_dir,
-    default => "${virtualenv_path}/",
+    default => "${venv_path}/",
   }
 
   anchor { 'thumbor::begin': }

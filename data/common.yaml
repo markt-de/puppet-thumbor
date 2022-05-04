@@ -25,4 +25,4 @@ thumbor::statefile: 'thumbor.version'
 thumbor::update_enabled: true
 thumbor::user: 'thumbor'
 thumbor::version: 'present'
-thumbor::virtualenv_path: ~
+thumbor::venv_path: ~

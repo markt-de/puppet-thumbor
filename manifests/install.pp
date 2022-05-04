@@ -8,14 +8,14 @@ class thumbor::install {
       ensure  => $thumbor::ensure,
       system  => true,
       require => Anchor['thumbor::install::begin'],
-      before  => Python::Pyvenv[$thumbor::virtualenv_path],
+      before  => Python::Pyvenv[$thumbor::venv_path],
     }
   }
 
   if $thumbor::manage_user {
-    $homepath = $thumbor::virtualenv_path ? {
+    $homepath = $thumbor::venv_path ? {
       undef   => '/home/thumbor/',
-      default => "${thumbor::virtualenv_path}/",
+      default => "${thumbor::venv_path}/",
     }
 
     user { $thumbor::user:
@@ -24,7 +24,7 @@ class thumbor::install {
       gid     => $thumbor::group,
       home    => $homepath,
       require => Group[$thumbor::group],
-      before  => Python::Pyvenv[$thumbor::virtualenv_path],
+      before  => Python::Pyvenv[$thumbor::venv_path],
     }
   }
 
@@ -35,9 +35,9 @@ class thumbor::install {
     }
   }
 
-  if $thumbor::virtualenv_path {
+  if $thumbor::venv_path {
     # Install thumbor in a virtualenv.
-    python::pyvenv { $thumbor::virtualenv_path:
+    python::pyvenv { $thumbor::venv_path:
       ensure  => $thumbor::ensure,
       version => 'system',
       owner   => $thumbor::user,
@@ -53,9 +53,9 @@ class thumbor::install {
 
   ensure_packages($thumbor::additional_packages)
 
-  $venv = $thumbor::virtualenv_path ? {
+  $venv = $thumbor::venv_path ? {
     undef   => 'system',
-    default => $thumbor::virtualenv_path,
+    default => $thumbor::venv_path,
   }
 
   python::pip { $thumbor::package_name:

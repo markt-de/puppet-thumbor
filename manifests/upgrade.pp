@@ -2,7 +2,7 @@
 # @api private
 class thumbor::upgrade {
   # Only perform upgrades when using Python venv.
-  if $thumbor::update_enabled and $thumbor::virtualenv_path {
+  if $thumbor::update_enabled and $thumbor::venv_path {
     $upgrade_statefile = "${thumbor::config_dir}/${thumbor::statefile}"
 
     # Get the Python version that should be used for Thumbor's venv.
@@ -27,7 +27,7 @@ class thumbor::upgrade {
       "test -f ${upgrade_statefile}",
       "&& ! grep '^${thumbor::version}/${python_version}$' ${upgrade_statefile}",
     ], ' ')
-    $upgrade_cmd = "${python_bin} -m venv --upgrade ${thumbor::virtualenv_path}"
+    $upgrade_cmd = "${python_bin} -m venv --upgrade ${thumbor::venv_path}"
 
     exec { 'upgrade venv':
       command => $upgrade_cmd,
