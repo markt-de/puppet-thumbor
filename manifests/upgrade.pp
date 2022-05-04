@@ -23,8 +23,10 @@ class thumbor::upgrade {
     $python_bin = "python${python_version}"
 
     # Check if upgrade is necessary by comparing version information.
+    # It is ensured that the initial installation is already complete by
+    # verifying that the venv directory exists.
     $upgrade_check = join([
-      "test -f ${upgrade_statefile}",
+      "test -d ${thumbor::venv_path}/bin",
       "&& ! grep '^${thumbor::version}/${python_version}$' ${upgrade_statefile}",
     ], ' ')
     $upgrade_cmd = "${python_bin} -m venv --upgrade ${thumbor::venv_path}"
