@@ -15,6 +15,7 @@
 * `thumbor::config`: Setup configuration files for Thumbor
 * `thumbor::install`: Install packages and dependencies for Thumbor
 * `thumbor::service`: Manage Thumbor system service and instances
+* `thumbor::upgrade`: Upgrade Thumbor's Python venv
 
 ### Defined types
 
@@ -30,26 +31,35 @@ Install and configure Thumbor
 
 The following parameters are available in the `thumbor` class:
 
+* [`additional_packages`](#additional_packages)
 * [`config`](#config)
+* [`config_dir`](#config_dir)
 * [`ensure`](#ensure)
-* [`security_key`](#security_key)
+* [`group`](#group)
+* [`extensions`](#extensions)
 * [`listen`](#listen)
-* [`ports`](#ports)
-* [`virtualenv_path`](#virtualenv_path)
+* [`manage_group`](#manage_group)
+* [`manage_python`](#manage_python)
+* [`manage_user`](#manage_user)
+* [`path`](#path)
 * [`package_name`](#package_name)
 * [`package_ensure`](#package_ensure)
 * [`pip_proxyserver`](#pip_proxyserver)
-* [`manage_user`](#manage_user)
-* [`user`](#user)
-* [`manage_group`](#manage_group)
-* [`group`](#group)
-* [`extensions`](#extensions)
-* [`additional_packages`](#additional_packages)
-* [`manage_python`](#manage_python)
-* [`version`](#version)
+* [`ports`](#ports)
 * [`python_config`](#python_config)
-* [`config_dir`](#config_dir)
+* [`security_key`](#security_key)
+* [`statefile`](#statefile)
+* [`update_enabled`](#update_enabled)
+* [`user`](#user)
+* [`version`](#version)
+* [`virtualenv_path`](#virtualenv_path)
 * [`extentions`](#extentions)
+
+##### <a name="additional_packages"></a>`additional_packages`
+
+Data type: `Array`
+
+Specifies a list of additional packages that are required for thumbor or any of it's dependencies.
 
 ##### <a name="config"></a>`config`
 
@@ -58,17 +68,27 @@ Data type: `Hash`
 The configuration for Thumbor. Note the hash keys will be converted to upper case.
 You can refer to Thumbor wiki for configuration options: https://github.com/thumbor/thumbor/wiki/Configuration
 
+##### <a name="config_dir"></a>`config_dir`
+
+Data type: `Stdlib::Absolutepath`
+
+Thumbor configuration files are stored in this directory if venv is not used
+
 ##### <a name="ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
 Controls the installation and removal of application components (files, user, group), default present
 
-##### <a name="security_key"></a>`security_key`
+##### <a name="group"></a>`group`
 
-Data type: `Optional[String]`
+Data type: `String`
 
-Security key to use in thumbor, default undef
+Name of the group to install (optional) and under which we run the thumbor service, default thumbor
+
+##### <a name="extensions"></a>`extensions`
+
+Extentions to install in thumbor virtual environment, default []
 
 ##### <a name="listen"></a>`listen`
 
@@ -76,17 +96,29 @@ Data type: `String`
 
 Host address to listen on, default 127.0.0.1
 
-##### <a name="ports"></a>`ports`
+##### <a name="manage_group"></a>`manage_group`
 
-Data type: `Variant[Array[String],String]`
+Data type: `Boolean`
 
-Array of port strings to let thumbor listen on. This also controls how many instances are spinned up. Default: [ '8000' ]
+If we control the installation of the group, default true
 
-##### <a name="virtualenv_path"></a>`virtualenv_path`
+##### <a name="manage_python"></a>`manage_python`
 
-Data type: `Optional[Stdlib::Absolutepath]`
+Data type: `Boolean`
 
-If we use virtualenv (false if undef) and what path we use as base, default undef
+If we control the installation of Python, default true
+
+##### <a name="manage_user"></a>`manage_user`
+
+Data type: `Boolean`
+
+If we control the installation of the user, default true
+
+##### <a name="path"></a>`path`
+
+Data type: `String`
+
+Specifies the content of the PATH environment variable when running commands.
 
 ##### <a name="package_name"></a>`package_name`
 
@@ -106,51 +138,11 @@ Data type: `Optional[String]`
 
 The full url (including credentials) to a proxy server or undef to not use one at all, default undef
 
-##### <a name="manage_user"></a>`manage_user`
+##### <a name="ports"></a>`ports`
 
-Data type: `Boolean`
+Data type: `Variant[Array[String],String]`
 
-If we control the installation of the user, default true
-
-##### <a name="user"></a>`user`
-
-Data type: `String`
-
-Name of the user to install (optional) and under which we run the thumbor service, default thumbor
-
-##### <a name="manage_group"></a>`manage_group`
-
-Data type: `Boolean`
-
-If we control the installation of the group, default true
-
-##### <a name="group"></a>`group`
-
-Data type: `String`
-
-Name of the group to install (optional) and under which we run the thumbor service, default thumbor
-
-##### <a name="extensions"></a>`extensions`
-
-Extentions to install in thumbor virtual environment, default []
-
-##### <a name="additional_packages"></a>`additional_packages`
-
-Data type: `Array`
-
-Specifies a list of additional packages that are required for thumbor or any of it's dependencies.
-
-##### <a name="manage_python"></a>`manage_python`
-
-Data type: `Boolean`
-
-If we control the installation of Python, default true
-
-##### <a name="version"></a>`version`
-
-Data type: `String`
-
-Version of Thumbor that should be installed, default 'present'
+Array of port strings to let thumbor listen on. This also controls how many instances are spinned up. Default: [ '8000' ]
 
 ##### <a name="python_config"></a>`python_config`
 
@@ -158,11 +150,42 @@ Data type: `Hash`
 
 Config for Python that should be used (if $manage_python is enabled)
 
-##### <a name="config_dir"></a>`config_dir`
+##### <a name="security_key"></a>`security_key`
 
-Data type: `Stdlib::Absolutepath`
+Data type: `Optional[String]`
 
-Thumbor configuration files are stored in this directory if venv is not used
+Security key to use in thumbor, default undef
+
+##### <a name="statefile"></a>`statefile`
+
+Data type: `String`
+
+This file contains the version information, it is internally used to determine if a venv upgrade is necessary
+
+##### <a name="update_enabled"></a>`update_enabled`
+
+Data type: `Boolean`
+
+Whether to automatically update the Python venv if necessary. Note that
+updates of the Thumbor PIP are controlled by the $version parameter.
+
+##### <a name="user"></a>`user`
+
+Data type: `String`
+
+Name of the user to install (optional) and under which we run the thumbor service, default thumbor
+
+##### <a name="version"></a>`version`
+
+Data type: `String`
+
+Version of Thumbor that should be installed, default 'present'
+
+##### <a name="virtualenv_path"></a>`virtualenv_path`
+
+Data type: `Optional[Stdlib::Absolutepath]`
+
+If we use virtualenv (false if undef) and what path we use as base, default undef
 
 ##### <a name="extentions"></a>`extentions`
 

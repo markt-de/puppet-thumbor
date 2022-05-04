@@ -11,6 +11,7 @@ thumbor::manage_python: true
 thumbor::manage_user: true
 thumbor::package_ensure: 'present'
 thumbor::package_name: 'thumbor'
+thumbor::path: '/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin'
 thumbor::pip_proxyserver: ~
 thumbor::ports:
   - '8000'
@@ -20,6 +21,8 @@ thumbor::python_config:
   dev: 'present'
   venv: 'present'
 thumbor::security_key: ~
+thumbor::statefile: 'thumbor.version'
+thumbor::update_enabled: true
 thumbor::user: 'thumbor'
 thumbor::version: 'present'
 thumbor::virtualenv_path: ~

@@ -64,6 +64,7 @@ class thumbor::install {
     proxy      => $thumbor::pip_proxyserver,
     require    => [ Package[$thumbor::additional_packages], Anchor['thumbor::install::virtualenv'] ],
     before     => Anchor['thumbor::install::end'],
+    notify     => Class['thumbor::service'],
   }
 
   python::pip { [ $thumbor::extentions ]:
@@ -72,6 +73,7 @@ class thumbor::install {
     proxy      => $thumbor::pip_proxyserver,
     require    => [ Package[$thumbor::additional_packages], Anchor['thumbor::install::virtualenv'] ],
     before     => Anchor['thumbor::install::end'],
+    notify     => Class['thumbor::service'],
   }
 
   anchor { 'thumbor::install::end': }

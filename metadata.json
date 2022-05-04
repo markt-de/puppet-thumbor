@@ -14,7 +14,7 @@
     },
     {
       "name": "puppet/python",
-      "version_requirement": ">= 6.0.0 < 7.0.0"
+      "version_requirement": ">= 6.2.1 < 7.0.0"
     },
     {
       "name": "puppet/systemd",
