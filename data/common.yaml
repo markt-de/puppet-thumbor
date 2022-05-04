@@ -17,7 +17,7 @@ thumbor::python_config:
   version: 'system'
   pip: 'present'
   dev: 'present'
-  virtualenv: 'present'
+  venv: 'present'
 thumbor::security_key: ~
 thumbor::user: 'thumbor'
 thumbor::version: 'present'
