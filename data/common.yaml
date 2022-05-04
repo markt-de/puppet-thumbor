@@ -14,7 +14,7 @@ thumbor::pip_proxyserver: ~
 thumbor::ports:
   - '8000'
 thumbor::python_config:
-  version: 'system'
+  version: 'python3'
   pip: 'present'
   dev: 'present'
   venv: 'present'

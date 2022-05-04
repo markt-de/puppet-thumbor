@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * rename parameter `$ensure_group` to `$manage_group`
 * use the `$ensure` parameter for files, user, group, etc.
 * add 'opencv-python' to `$extensions` (was previously hardcoded)
+* change default python version from 'system' to 'python3'
 
 ### Removed
 * remove parameter `$default_options` (use `$config` instead)
