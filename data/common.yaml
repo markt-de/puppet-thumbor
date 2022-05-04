@@ -2,7 +2,7 @@
 thumbor::config: {}
 thumbor::config_dir: '/etc'
 thumbor::ensure: 'present'
-thumbor::extentions:
+thumbor::plugins:
   - 'opencv-python'
 thumbor::group: 'thumbor'
 thumbor::listen: '127.0.0.1'

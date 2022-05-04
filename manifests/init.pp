@@ -16,8 +16,8 @@
 # @param group
 #   Name of the group to install (optional) and under which we run the thumbor service, default thumbor
 #
-# @param extensions
-#   Extentions to install in thumbor virtual environment, default []
+# @param plugins
+#   Thumbor plugins to install via PIP
 #
 # @param listen
 #   Host address to listen on, default 127.0.0.1
@@ -73,7 +73,6 @@ class thumbor (
   Hash $config,
   Stdlib::Absolutepath $config_dir,
   Enum['present', 'absent'] $ensure,
-  Variant[Array[String],String] $extentions,
   String $group,
   String $listen,
   Boolean $manage_group,
@@ -83,6 +82,7 @@ class thumbor (
   String $package_name,
   String $path,
   Optional[String] $pip_proxyserver,
+  Variant[Array[String],String] $plugins,
   Variant[Array[String],String] $ports,
   Hash $python_config,
   Optional[String] $security_key,

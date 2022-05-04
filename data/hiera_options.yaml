@@ -4,7 +4,7 @@ lookup_options:
   "^thumbor::additional_packages":
     merge:
       strategy: first
-  "^thumbor::extentions":
+  "^thumbor::plugins":
     merge:
       strategy: first
   "^thumbor::ports":

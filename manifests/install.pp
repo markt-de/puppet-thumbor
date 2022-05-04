@@ -67,7 +67,7 @@ class thumbor::install {
     notify     => Class['thumbor::service'],
   }
 
-  python::pip { [ $thumbor::extentions ]:
+  python::pip { [ $thumbor::plugins ]:
     ensure     => $thumbor::package_ensure,
     virtualenv => $venv,
     proxy      => $thumbor::pip_proxyserver,

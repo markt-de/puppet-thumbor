@@ -81,7 +81,7 @@ Additional plugins may also be installed via PIP:
 
 ```
 class { 'thumbor':
-  extentions   => [ 'tc_aws', 'thumbor_spaces' ],
+  plugins => [ 'tc_aws', 'thumbor_spaces' ],
   ...
 }
 ```

@@ -36,7 +36,7 @@ The following parameters are available in the `thumbor` class:
 * [`config_dir`](#config_dir)
 * [`ensure`](#ensure)
 * [`group`](#group)
-* [`extensions`](#extensions)
+* [`plugins`](#plugins)
 * [`listen`](#listen)
 * [`manage_group`](#manage_group)
 * [`manage_python`](#manage_python)
@@ -53,7 +53,6 @@ The following parameters are available in the `thumbor` class:
 * [`user`](#user)
 * [`version`](#version)
 * [`virtualenv_path`](#virtualenv_path)
-* [`extentions`](#extentions)
 
 ##### <a name="additional_packages"></a>`additional_packages`
 
@@ -86,9 +85,11 @@ Data type: `String`
 
 Name of the group to install (optional) and under which we run the thumbor service, default thumbor
 
-##### <a name="extensions"></a>`extensions`
+##### <a name="plugins"></a>`plugins`
 
-Extentions to install in thumbor virtual environment, default []
+Data type: `Variant[Array[String],String]`
+
+Thumbor plugins to install via PIP
 
 ##### <a name="listen"></a>`listen`
 
@@ -186,12 +187,6 @@ Version of Thumbor that should be installed, default 'present'
 Data type: `Optional[Stdlib::Absolutepath]`
 
 If we use virtualenv (false if undef) and what path we use as base, default undef
-
-##### <a name="extentions"></a>`extentions`
-
-Data type: `Variant[Array[String],String]`
-
-
 
 ## Defined types
 
