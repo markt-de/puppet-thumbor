@@ -1,0 +1,2 @@
+---
+thumbor::config_dir: '/usr/local/etc'

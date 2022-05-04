@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 * add new parameter `$version` to control the version of Thumbor
 * add new parameter `$python_config` to control Python installation options
+* add new parameter `$config_dir` to control where config files are stored
 
 ### Fixed
 * fix compatibility issues with voxpupuli/python >=6.0.0
@@ -23,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * use the `$ensure` parameter for files, user, group, etc.
 * add 'opencv-python' to `$extensions` (was previously hardcoded)
 * change default python version from 'system' to 'python3'
+* change default config directory from '/usr/local' to '/etc'
 
 ### Removed
 * remove parameter `$default_options` (use `$config` instead)

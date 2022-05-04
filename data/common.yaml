@@ -1,5 +1,6 @@
 ---
 thumbor::config: {}
+thumbor::config_dir: '/etc'
 thumbor::ensure: 'present'
 thumbor::extentions:
   - 'opencv-python'

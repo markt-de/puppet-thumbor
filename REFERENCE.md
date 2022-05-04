@@ -48,6 +48,7 @@ The following parameters are available in the `thumbor` class:
 * [`manage_python`](#manage_python)
 * [`version`](#version)
 * [`python_config`](#python_config)
+* [`config_dir`](#config_dir)
 * [`extentions`](#extentions)
 
 ##### <a name="config"></a>`config`
@@ -83,7 +84,7 @@ Array of port strings to let thumbor listen on. This also controls how many inst
 
 ##### <a name="virtualenv_path"></a>`virtualenv_path`
 
-Data type: `Optional[String]`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 If we use virtualenv (false if undef) and what path we use as base, default undef
 
@@ -156,6 +157,12 @@ Version of Thumbor that should be installed, default 'present'
 Data type: `Hash`
 
 Config for Python that should be used (if $manage_python is enabled)
+
+##### <a name="config_dir"></a>`config_dir`
+
+Data type: `Stdlib::Absolutepath`
+
+Thumbor configuration files are stored in this directory if venv is not used
 
 ##### <a name="extentions"></a>`extentions`
 

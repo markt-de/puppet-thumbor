@@ -55,13 +55,16 @@
 # @param python_config
 #   Config for Python that should be used (if $manage_python is enabled)
 #
+# @param config_dir
+#   Thumbor configuration files are stored in this directory if venv is not used
+#
 class thumbor (
   Hash $config,
   Enum['present', 'absent'] $ensure,
   Optional[String] $security_key,
   String $listen,
   Variant[Array[String],String] $ports,
-  Optional[String] $virtualenv_path,
+  Optional[Stdlib::Absolutepath] $virtualenv_path,
   String $package_name,
   Enum['present', 'absent', 'latest'] $package_ensure,
   Optional[String] $pip_proxyserver,
@@ -74,9 +77,10 @@ class thumbor (
   Boolean $manage_python,
   Hash $python_config,
   String $version,
+  Stdlib::Absolutepath $config_dir,
 ) {
   $apppath = $virtualenv_path ? {
-    undef   => '/usr/local/',
+    undef   => $config_dir,
     default => "${virtualenv_path}/",
   }
 
