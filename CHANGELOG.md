@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * change default python version from 'system' to 'python3'
 * change default config directory from '/usr/local' to '/etc'
 * enable automatic updates of Thumbor's Python venv
+* refactor code into smaller Puppet classes
 
 ### Removed
 * remove parameter `$default_options` (use `$config` instead)

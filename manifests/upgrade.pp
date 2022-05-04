@@ -35,7 +35,6 @@ class thumbor::upgrade {
       path    => $thumbor::path,
       user    => $thumbor::user,
       group   => $thumbor::group,
-      require => Anchor['thumbor::install::virtualenv'],
       notify  => Class['thumbor::service'],
     }
 

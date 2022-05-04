@@ -3,38 +3,6 @@
 class thumbor::install {
   anchor { 'thumbor::install::begin': }
 
-  if $thumbor::manage_group {
-    group { $thumbor::group:
-      ensure  => $thumbor::ensure,
-      system  => true,
-      require => Anchor['thumbor::install::begin'],
-      before  => Python::Pyvenv[$thumbor::venv_path],
-    }
-  }
-
-  if $thumbor::manage_user {
-    $homepath = $thumbor::venv_path ? {
-      undef   => '/home/thumbor/',
-      default => "${thumbor::venv_path}/",
-    }
-
-    user { $thumbor::user:
-      ensure  => $thumbor::ensure,
-      system  => true,
-      gid     => $thumbor::group,
-      home    => $homepath,
-      require => Group[$thumbor::group],
-      before  => Python::Pyvenv[$thumbor::venv_path],
-    }
-  }
-
-  if $thumbor::manage_python {
-    class { 'python' :
-      *       => $thumbor::python_config,
-      require => Anchor['thumbor::install::begin'],
-    }
-  }
-
   if $thumbor::venv_path {
     # Install thumbor in a virtualenv.
     python::pyvenv { $thumbor::venv_path:
@@ -42,7 +10,7 @@ class thumbor::install {
       version => 'system',
       owner   => $thumbor::user,
       group   => $thumbor::group,
-      require => [ Class['python'] ],
+      require => Class['python'],
       before  => Anchor['thumbor::install::virtualenv'],
     }
   }

@@ -14,8 +14,10 @@
 
 * `thumbor::config`: Setup configuration files for Thumbor
 * `thumbor::install`: Install packages and dependencies for Thumbor
+* `thumbor::python`: Manage the Python installation
 * `thumbor::service`: Manage Thumbor system service and instances
 * `thumbor::upgrade`: Upgrade Thumbor's Python venv
+* `thumbor::user`: Setup users and groups for Thumbor
 
 ### Defined types
 
