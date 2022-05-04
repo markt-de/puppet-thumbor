@@ -26,7 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * rename parameter `$extentions` to `$plugins`
 * rename parameter `$virtualenv_path` to `$venv_path`
 * use the `$ensure` parameter for files, user, group, etc.
-* add 'opencv-python' to `$extensions` (was previously hardcoded)
+* add 'opencv-python' to `$plugins` (was previously hardcoded)
 * change default python version from 'system' to 'python3'
 * change default config directory from '/usr/local' to '/etc'
 * enable automatic updates of Thumbor's Python venv

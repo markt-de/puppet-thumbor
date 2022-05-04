@@ -81,7 +81,7 @@ Additional Thumbor [plugins](https://thumbor.readthedocs.io/en/latest/plugins.ht
 
 ```
 class { 'thumbor':
-  plugins => [ 'tc_aws', 'thumbor_spaces' ],
+  plugins => [ 'opencv-python', 'tc_aws', 'thumbor_spaces' ],
   ...
 }
 ```
