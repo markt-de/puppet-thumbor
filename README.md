@@ -77,7 +77,7 @@ This configuration will also automatically update the Python venv to the specifi
 
 #### Plugins
 
-Additional plugins may also be installed via PIP:
+Additional Thumbor [plugins](https://thumbor.readthedocs.io/en/latest/plugins.html) may also be installed via PIP:
 
 ```
 class { 'thumbor':
