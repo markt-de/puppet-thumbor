@@ -5,7 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [v2.0.0] - 2022-05-09
+This is a new major release of this module. It adds new functionality,
+but also introduces some breaking changes.
 
 ### Added
 * add support for updating Thumbor and the Python venv
@@ -33,9 +35,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * refactor code into smaller Puppet classes
 
 ### Removed
+* drop support for Thumbor 6 (upgrades should still be possible)
 * remove parameter `$default_options` (use `$config` instead)
 
-## v1.0.0
+## v1.0.0 - 2019-10-23
 Initial release before forking the module
 
 [Unreleased]: https://github.com/markt-de/puppet-thumbor/compare/v1.0.0...HEAD
+[v2.0.0]: https://github.com/markt-de/puppet-thumbor/compare/v1.0.0...v2.0.0
