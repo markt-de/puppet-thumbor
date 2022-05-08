@@ -7,9 +7,9 @@ class thumbor::upgrade {
 
     # Get the Python version that should be used for Thumbor's venv.
     if ($thumbor::manage_python and $thumbor::python_config and 'version' in $thumbor::python_config) {
-      $_python_version = regsubst($thumbor::python_config['version'], '[^0-9]', '', 'G')
+      $_python_version = regsubst($thumbor::python_config['version'], '[^0-9.]', '', 'G')
     } elsif ('python3_release' in $facts) {
-      $_python_version = regsubst($facts['python3_release'], '[^0-9]', '', 'G')
+      $_python_version = regsubst($facts['python3_release'], '[^0-9.]', '', 'G')
     }
 
     # Fallback if the Python version is still unknown.
@@ -20,6 +20,7 @@ class thumbor::upgrade {
     }
 
     # Try to guess the name of the Python binary.
+    # It is usually something like python3 or python3.8.
     $python_bin = "python${python_version}"
 
     # Check if upgrade is necessary by comparing version information.
@@ -38,7 +39,6 @@ class thumbor::upgrade {
       path    => $thumbor::path,
       user    => $thumbor::user,
       group   => $thumbor::group,
-      require => Class['python'],
       notify  => Class['thumbor::service'],
     }
 
