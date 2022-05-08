@@ -6,7 +6,7 @@ class thumbor::upgrade {
     $upgrade_statefile = "${thumbor::config_dir}/${thumbor::statefile}"
 
     # Get the Python version that should be used for Thumbor's venv.
-    if ($thumbor::python_config and 'version' in $thumbor::python_config) {
+    if ($thumbor::manage_python and $thumbor::python_config and 'version' in $thumbor::python_config) {
       $_python_version = regsubst($thumbor::python_config['version'], '[^0-9]', '', 'G')
     } elsif ('python3_release' in $facts) {
       $_python_version = regsubst($facts['python3_release'], '[^0-9]', '', 'G')
@@ -31,12 +31,14 @@ class thumbor::upgrade {
     ], ' ')
     $upgrade_cmd = "${python_bin} -m venv --upgrade ${thumbor::venv_path}"
 
+    # Run the command to upgrade the venv
     exec { 'upgrade venv':
       command => $upgrade_cmd,
       onlyif  => $upgrade_check,
       path    => $thumbor::path,
       user    => $thumbor::user,
       group   => $thumbor::group,
+      require => Class['python'],
       notify  => Class['thumbor::service'],
     }
 
