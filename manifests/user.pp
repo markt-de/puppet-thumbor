@@ -3,8 +3,8 @@
 class thumbor::user {
   if $thumbor::manage_group {
     group { $thumbor::group:
-      ensure  => $thumbor::ensure,
-      system  => true,
+      ensure => $thumbor::ensure,
+      system => true,
     }
   }
 
