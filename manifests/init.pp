@@ -92,9 +92,12 @@ class thumbor (
   String $version,
   Optional[Stdlib::Absolutepath] $venv_path,
 ) {
-  $apppath = $venv_path ? {
-    undef   => $config_dir,
-    default => "${venv_path}/",
+  if $venv_path {
+    $bin_path = $venv_path
+    $cfg_path = $venv_path
+  } else {
+    $bin_path = '/usr/local'
+    $cfg_path = $config_dir
   }
 
   anchor { 'thumbor::begin': }

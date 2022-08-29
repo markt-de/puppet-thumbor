@@ -37,7 +37,6 @@ describe 'thumbor' do
         it { is_expected.to contain_file('/etc/thumbor.key').with_content(%r{AAAAABBBBCCCCC111112222233333}) }
       end
 
-
       context 'when setting config' do
         let :params do
           {

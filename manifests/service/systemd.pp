@@ -12,6 +12,6 @@ define thumbor::service::systemd (
     ensure    => 'running',
     enable    => true,
     require   => Systemd::Unit_file['thumbor@.service'],
-    subscribe => File["${thumbor::apppath}/thumbor.conf"],
+    subscribe => File["${thumbor::cfg_path}/thumbor.conf"],
   }
 }

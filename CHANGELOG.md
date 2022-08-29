@@ -9,8 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 * add unit tests to cover the basic functionality
+* add basic acceptance tests
 
 ### Fixed
+* fix wrong path to Thumbor binary when not using Python venv
 * fix puppet-lint offenses
 
 ### Changed

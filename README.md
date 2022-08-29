@@ -1,6 +1,6 @@
 # puppet-thumbor
 
-[![Build Status](https://travis-ci.org/markt-de/puppet-thumbor.png?branch=main)](https://travis-ci.org/markt-de/puppet-thumbor)
+[![Build Status](https://github.com/markt-de/puppet-thumbor/actions/workflows/ci.yaml/badge.svg)](https://github.com/markt-de/puppet-thumbor/actions/workflows/ci.yaml)
 [![Puppet Forge](https://img.shields.io/puppetforge/v/fraenki/thumbor.svg)](https://forge.puppetlabs.com/fraenki/thumbor)
 [![Puppet Forge](https://img.shields.io/puppetforge/dt/fraenki/thumbor.svg)](https://forge.puppetlabs.com/fraenki/thumbor)
 
@@ -10,7 +10,8 @@
 1. [Usage](#usage)
     - [Basic usage](#basic-usage)
     - [Python venv](#python-venv)
-    - [Plugins](#Plugins)
+    - [Plugins](#plugins)
+    - [Updating Thumbor](#updating-thumbor)
 1. [Reference](#reference)
 1. [Development](#development)
 
@@ -85,6 +86,19 @@ class { 'thumbor':
   ...
 }
 ```
+
+#### Updating Thumbor
+
+When using the default configuration, the module will only install the currently available version of Thumbor. In order to update Thumbor, the `$version` parameter must be changed:
+
+```
+class { 'thumbor':
+  version => '7.1.0',
+  ...
+}
+```
+
+The value is directly passed through to the [pip defined type](https://github.com/voxpupuli/puppet-python/blob/master/REFERENCE.md#pythonpip). All values supported by this defined type may be used.
 
 ### Reference
 

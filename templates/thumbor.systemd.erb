@@ -7,8 +7,8 @@ Type=simple
 Restart=on-failure
 StandardOutput=journal
 PrivateTmp=true
-WorkingDirectory=<%= scope.lookupvar('thumbor::apppath') %>
-ExecStart=<%= scope.lookupvar('thumbor::apppath') -%>/bin/thumbor -c "<%= scope.lookupvar('thumbor::apppath') -%>/thumbor.conf" -k "<%= scope.lookupvar('thumbor::apppath') -%>/thumbor.key" -i "<%= scope.lookupvar('thumbor::listen') -%>" -p "%i"
+WorkingDirectory=<%= scope.lookupvar('thumbor::cfg_path') %>
+ExecStart=<%= scope.lookupvar('thumbor::bin_path') -%>/bin/thumbor -c "<%= scope.lookupvar('thumbor::cfg_path') -%>/thumbor.conf" -k "<%= scope.lookupvar('thumbor::cfg_path') -%>/thumbor.key" -i "<%= scope.lookupvar('thumbor::listen') -%>" -p "%i"
 User=<%= scope.lookupvar('thumbor::user') %>
 Group=<%= scope.lookupvar('thumbor::group') %>
 

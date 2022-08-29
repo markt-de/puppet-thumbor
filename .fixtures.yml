@@ -5,5 +5,9 @@ fixtures:
     stdlib: "puppetlabs/stdlib"
     systemd: "puppet/systemd"
     yumrepo_core: "puppetlabs/yumrepo_core"
+  repositories:
+    facts: "https://github.com/puppetlabs/puppetlabs-facts.git"
+    provision: "https://github.com/puppetlabs/provision.git"
+    puppet_agent: "https://github.com/puppetlabs/puppetlabs-puppet_agent.git"
   symlinks:
     thumbor: "#{source_dir}"
