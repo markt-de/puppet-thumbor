@@ -30,16 +30,22 @@ class thumbor::install {
     ensure     => $thumbor::version,
     virtualenv => $venv,
     proxy      => $thumbor::pip_proxyserver,
-    require    => [ Package[$thumbor::additional_packages], Anchor['thumbor::install::virtualenv'] ],
+    require    => [
+      Package[$thumbor::additional_packages],
+      Anchor['thumbor::install::virtualenv'],
+    ],
     before     => Anchor['thumbor::install::end'],
     notify     => Class['thumbor::service'],
   }
 
-  python::pip { [ $thumbor::plugins ]:
+  python::pip { [$thumbor::plugins]:
     ensure     => $thumbor::package_ensure,
     virtualenv => $venv,
     proxy      => $thumbor::pip_proxyserver,
-    require    => [ Package[$thumbor::additional_packages], Anchor['thumbor::install::virtualenv'] ],
+    require    => [
+      Package[$thumbor::additional_packages],
+      Anchor['thumbor::install::virtualenv'],
+    ],
     before     => Anchor['thumbor::install::end'],
     notify     => Class['thumbor::service'],
   }

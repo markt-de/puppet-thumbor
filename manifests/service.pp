@@ -5,6 +5,6 @@ class thumbor::service {
   -> systemd::unit_file { 'thumbor@.service':
     content => template('thumbor/thumbor.systemd.erb'),
   }
-  -> thumbor::service::systemd{ [ $thumbor::ports ]: }
+  -> thumbor::service::systemd { [$thumbor::ports]: }
   -> anchor { 'thumbor::service::end': }
 }

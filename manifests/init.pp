@@ -98,11 +98,11 @@ class thumbor (
   }
 
   anchor { 'thumbor::begin': }
-  -> class{ 'thumbor::python': }
-  -> class{ 'thumbor::user': }
-  -> class{ 'thumbor::upgrade': }
-  -> class{ 'thumbor::install': }
-  -> class{ 'thumbor::config': }
-  -> class{ 'thumbor::service': }
+  -> class { 'thumbor::python': }
+  -> class { 'thumbor::user': }
+  -> class { 'thumbor::upgrade': }
+  -> class { 'thumbor::install': }
+  -> class { 'thumbor::config': }
+  -> class { 'thumbor::service': }
   -> anchor { 'thumbor::end': }
 }
