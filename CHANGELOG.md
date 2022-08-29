@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### [Unreleases]
 
-### Fixes
+### Fixed
 * fix puppet-lint offenses
+
+### Changed
+* update to PDK 2.5.0
 
 ### Removed
 * drop obsolete examples
