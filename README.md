@@ -35,7 +35,7 @@ class { 'thumbor':
 Next run a simple test on the same machine to verify that Thumbor is working as expected:
 
 ```
-curl -v http://127.0.0.1:8000/unsafe/200x200/https://puppet.com/images/logos/puppet-logo-black.svg
+curl -v http://localhost:8000/unsafe/200x200/https%3A%2F%2Fgithub.com%2Fthumbor%2Fthumbor%2Fraw%2Fmaster%2Fexample.jpg
 ```
 
 It is also supported to run multiple instances and to customize various installation parameters:

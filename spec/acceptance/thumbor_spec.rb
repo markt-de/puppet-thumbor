@@ -3,10 +3,12 @@ require 'spec_helper_acceptance'
 describe 'thumbor' do
   before(:all) do
     apply_manifest(%(
-      # Tests will fail if `ss` is not installed.
+      # be_listening() tests will fail if `ss` is not installed.
       if ($facts['os']['family'] == 'RedHat') and (versioncmp($facts['os']['release']['major'], '8') >= 0) {
         ensure_packages('iproute')
       }
+      # cURL is needed to send requests to Thumbor
+      ensure_packages('curl')
     ), catch_failures: true)
   end
   context 'with default parameters' do
@@ -27,6 +29,16 @@ describe 'thumbor' do
 
     describe port(8000) do
       it { is_expected.to be_listening }
+    end
+
+    it 'responds to requests' do
+      # Thumbor may take a while to start up
+      sleep(5)
+      # Use the test image from Thumbor's documentation
+      run_shell('curl -v http://localhost:8000/unsafe/300x200/https%3A%2F%2Fgithub.com%2Fthumbor%2Fthumbor%2Fraw%2Fmaster%2Fexample.jpg --output /dev/null') do |r|
+        expect(r.stderr).to match(%r{200 OK})
+        expect(r.exit_code).to be_zero
+      end
     end
   end
 end
