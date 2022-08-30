@@ -50,3 +50,6 @@ gha_rocky8:
 gha_ub2004:
   provisioner: docker
   images: ['litmusimage/ubuntu:20.04']
+gha_ub2204:
+  provisioner: docker
+  images: ['litmusimage/ubuntu:22.04']

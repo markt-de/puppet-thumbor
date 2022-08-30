@@ -22,6 +22,9 @@
 # @param listen
 #   Host address to listen on, default 127.0.0.1
 #
+# @param manage_epel
+#   If EPEL should be enabled on RHEL-based distributions.
+#
 # @param manage_group
 #   If we control the installation of the group, default true
 #
@@ -39,6 +42,9 @@
 #
 # @param package_ensure
 #   Control the ensure on additional pip installations, default $ensure ('present')
+#
+# @param pip_provider
+#   The version of pip to use.
 #
 # @param pip_proxyserver
 #   The full url (including credentials) to a proxy server or undef to not use one at all, default undef
@@ -75,12 +81,14 @@ class thumbor (
   Enum['present', 'absent'] $ensure,
   String $group,
   String $listen,
+  Boolean $manage_epel,
   Boolean $manage_group,
   Boolean $manage_python,
   Boolean $manage_user,
   Enum['present', 'absent', 'latest'] $package_ensure,
   String $package_name,
   String $path,
+  Optional[String] $pip_provider,
   Optional[String] $pip_proxyserver,
   Variant[Array[String],String] $plugins,
   Variant[Array[String],String] $ports,

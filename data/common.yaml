@@ -6,20 +6,25 @@ thumbor::plugins:
   - 'opencv-python'
 thumbor::group: 'thumbor'
 thumbor::listen: '127.0.0.1'
+thumbor::manage_epel: false
 thumbor::manage_group: true
 thumbor::manage_python: true
 thumbor::manage_user: true
 thumbor::package_ensure: 'present'
 thumbor::package_name: 'thumbor'
 thumbor::path: '/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin'
+thumbor::pip_provider: ~
 thumbor::pip_proxyserver: ~
 thumbor::ports:
   - '8000'
 thumbor::python_config:
-  version: 'python3'
-  pip: 'present'
   dev: 'present'
+  manage_pip_package: true
+  manage_python_package: true
+  manage_venv_package: true
+  pip: 'present'
   venv: 'present'
+  version: 'python3'
 thumbor::security_key: ~
 thumbor::statefile: 'thumbor.version'
 thumbor::update_enabled: true

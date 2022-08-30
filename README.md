@@ -7,6 +7,7 @@
 #### Table of Contents
 
 1. [Overview](#overview)
+1. [Requirements](#requirements)
 1. [Usage](#usage)
     - [Basic usage](#basic-usage)
     - [Python venv](#python-venv)
@@ -18,6 +19,13 @@
 ## Overview
 
 Puppet module to deploy and manage [Thumbor](https://github.com/thumbor/thumbor/).
+
+## Requirements
+
+* A supported version of Puppet
+* A platform/distribution where Python 3.8+ is readily available
+* Only Thumbor 7+ is supported
+* EPEL repositories on RHEL-based distributions
 
 ## Usage
 

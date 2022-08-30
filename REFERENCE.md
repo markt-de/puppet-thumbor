@@ -40,12 +40,14 @@ The following parameters are available in the `thumbor` class:
 * [`group`](#group)
 * [`plugins`](#plugins)
 * [`listen`](#listen)
+* [`manage_epel`](#manage_epel)
 * [`manage_group`](#manage_group)
 * [`manage_python`](#manage_python)
 * [`manage_user`](#manage_user)
 * [`path`](#path)
 * [`package_name`](#package_name)
 * [`package_ensure`](#package_ensure)
+* [`pip_provider`](#pip_provider)
 * [`pip_proxyserver`](#pip_proxyserver)
 * [`ports`](#ports)
 * [`python_config`](#python_config)
@@ -99,6 +101,12 @@ Data type: `String`
 
 Host address to listen on, default 127.0.0.1
 
+##### <a name="manage_epel"></a>`manage_epel`
+
+Data type: `Boolean`
+
+If EPEL should be enabled on RHEL-based distributions.
+
 ##### <a name="manage_group"></a>`manage_group`
 
 Data type: `Boolean`
@@ -134,6 +142,12 @@ Package name of the thumbor application as found in pip, default thumbor
 Data type: `Enum['present', 'absent', 'latest']`
 
 Control the ensure on additional pip installations, default $ensure ('present')
+
+##### <a name="pip_provider"></a>`pip_provider`
+
+Data type: `Optional[String]`
+
+The version of pip to use.
 
 ##### <a name="pip_proxyserver"></a>`pip_proxyserver`
 

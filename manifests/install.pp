@@ -3,6 +3,10 @@
 class thumbor::install {
   anchor { 'thumbor::install::begin': }
 
+  if $thumbor::manage_epel and $facts['os']['family'] == 'RedHat' {
+    require epel
+  }
+
   if $thumbor::venv_path {
     # Install thumbor in a virtualenv.
     python::pyvenv { $thumbor::venv_path:
@@ -27,27 +31,29 @@ class thumbor::install {
   }
 
   python::pip { $thumbor::package_name:
-    ensure     => $thumbor::version,
-    virtualenv => $venv,
-    proxy      => $thumbor::pip_proxyserver,
-    require    => [
+    ensure       => $thumbor::version,
+    virtualenv   => $venv,
+    pip_provider => $thumbor::pip_provider,
+    proxy        => $thumbor::pip_proxyserver,
+    require      => [
       Package[$thumbor::additional_packages],
       Anchor['thumbor::install::virtualenv'],
     ],
-    before     => Anchor['thumbor::install::end'],
-    notify     => Class['thumbor::service'],
+    before       => Anchor['thumbor::install::end'],
+    notify       => Class['thumbor::service'],
   }
 
   python::pip { [$thumbor::plugins]:
-    ensure     => $thumbor::package_ensure,
-    virtualenv => $venv,
-    proxy      => $thumbor::pip_proxyserver,
-    require    => [
+    ensure       => $thumbor::package_ensure,
+    virtualenv   => $venv,
+    pip_provider => $thumbor::pip_provider,
+    proxy        => $thumbor::pip_proxyserver,
+    require      => [
       Package[$thumbor::additional_packages],
       Anchor['thumbor::install::virtualenv'],
     ],
-    before     => Anchor['thumbor::install::end'],
-    notify     => Class['thumbor::service'],
+    before       => Anchor['thumbor::install::end'],
+    notify       => Class['thumbor::service'],
   }
 
   anchor { 'thumbor::install::end': }

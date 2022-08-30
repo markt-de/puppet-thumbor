@@ -8,18 +8,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### [Unreleases]
 
 ### Added
+* add new parameter `$pip_provider`
+* add new parameter `$manage_epel`
 * add unit tests to cover the basic functionality
 * add basic acceptance tests
 
 ### Fixed
 * fix wrong path to Thumbor binary when not using Python venv
+* fix installation issues on CentOS/Rocky
 * fix puppet-lint offenses
 
 ### Changed
+* enable EPEL on RHEL-based distributions by default
+* set default Python version to 3.8 on RHEL8-based distributions
+* update documentation (requirements, examples)
 * update OS support
 * update to PDK 2.5.0
 
 ### Removed
+* drop support for RHEL7 and Debian 10 (due to incompatible Python3)
 * drop obsolete examples
 
 ## [v2.0.0] - 2022-05-09

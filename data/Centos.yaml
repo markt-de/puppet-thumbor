@@ -1,0 +1,4 @@
+---
+thumbor::python_config:
+  # has no extra package for venv
+  manage_venv_package: false

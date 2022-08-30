@@ -13,3 +13,8 @@ thumbor::additional_packages:
   - 'make'
   - 'openssl-devel'
   - 'openssl-libs'
+thumbor::manage_epel: true
+thumbor::pip_provider: 'pip3'
+thumbor::python_config:
+  # EPEL provides additional packages
+  use_epel: true
