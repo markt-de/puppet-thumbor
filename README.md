@@ -43,7 +43,7 @@ It is also supported to run multiple instances and to customize various installa
 ```
 class { 'thumbor':
   config       => {
-    'AUTO_WEBP'               => 'True',
+    'AUTO_WEBP'               => true,
     'ENGINE_THREADPOOL_SIZE'  => 4,
     'HTTP_LOADER_MAX_CLIENTS' => 1024,
   },
@@ -93,7 +93,8 @@ When using the default configuration, the module will only install the currently
 
 ```
 class { 'thumbor':
-  version => '7.1.0',
+  version        => '7.1.0',
+  update_enabled => true,
   ...
 }
 ```
