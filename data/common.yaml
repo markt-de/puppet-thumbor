@@ -26,6 +26,7 @@ thumbor::python_config:
   venv: 'present'
   version: 'python3'
 thumbor::security_key: ~
+thumbor::service_timeout: 10
 thumbor::statefile: 'thumbor.version'
 thumbor::update_enabled: true
 thumbor::user: 'thumbor'

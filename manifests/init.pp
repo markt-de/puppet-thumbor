@@ -58,6 +58,9 @@
 # @param security_key
 #   Security key to use in thumbor, default undef
 #
+# @param service_timeout
+#   Configures the wait time for service commands.
+
 # @param statefile
 #   This file contains the version information, it is internally used to determine if a venv upgrade is necessary
 #
@@ -94,6 +97,7 @@ class thumbor (
   Variant[Array[String],String] $ports,
   Hash $python_config,
   Optional[String] $security_key,
+  Integer $service_timeout,
   String $statefile,
   Boolean $update_enabled,
   String $user,
