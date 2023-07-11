@@ -1,8 +1,8 @@
 # puppet-thumbor
 
 [![Build Status](https://github.com/markt-de/puppet-thumbor/actions/workflows/ci.yaml/badge.svg)](https://github.com/markt-de/puppet-thumbor/actions/workflows/ci.yaml)
-[![Puppet Forge](https://img.shields.io/puppetforge/v/fraenki/thumbor.svg)](https://forge.puppetlabs.com/fraenki/thumbor)
-[![Puppet Forge](https://img.shields.io/puppetforge/dt/fraenki/thumbor.svg)](https://forge.puppetlabs.com/fraenki/thumbor)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/markt/thumbor.svg)](https://forge.puppetlabs.com/markt/thumbor)
+[![Puppet Forge](https://img.shields.io/puppetforge/dt/markt/thumbor.svg)](https://forge.puppetlabs.com/markt/thumbor)
 
 #### Table of Contents
 
