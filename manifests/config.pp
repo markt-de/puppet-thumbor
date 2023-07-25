@@ -13,7 +13,9 @@ class thumbor::config {
   }
   -> file { "${thumbor::cfg_path}/thumbor.conf":
     ensure  => $thumbor::ensure,
-    content => template('thumbor/thumbor.conf.erb'),
+    content => epp('thumbor/thumbor.conf.epp', {
+        _default_config => $_default_config,
+    }),
     owner   => $thumbor::user,
     group   => $thumbor::group,
     mode    => '0644',

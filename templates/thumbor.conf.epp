@@ -1,0 +1,15 @@
+<% $_default_config.keys.sort.each |$config_key| { -%>
+<%   if ($_default_config[$config_key] =~ Hash) { -%>
+<%= $config_key.upcase -%> = [
+<%     $_default_config[$config_key].flatten.each |$value| { -%>
+	'<%= $value -%>',
+<%     } -%>
+]
+<%   } elsif ($_default_config[$config_key] =~ Boolean) { -%>
+<%= $config_key.upcase %> = <%= $_default_config[$config_key].bool2str.capitalize %>
+<%   } elsif ($_default_config[$config_key] =~ Integer) { -%>
+<%= $config_key.upcase %> = <%= $_default_config[$config_key] %>
+<%   } elsif ($_default_config[$config_key] =~ String) { -%>
+<%= $config_key.upcase %> = '<%= $_default_config[$config_key] %>'
+<%   } -%>
+<% } -%>
