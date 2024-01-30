@@ -1,6 +1,8 @@
 # @summary Upgrade Thumbor's Python venv
 # @api private
 class thumbor::upgrade {
+  require(['thumbor::python', 'thumbor::user'])
+
   # Only perform upgrades when using Python venv.
   if $thumbor::update_enabled and $thumbor::venv_path {
     $upgrade_statefile = "${thumbor::config_dir}/${thumbor::statefile}"
