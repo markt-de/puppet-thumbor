@@ -112,12 +112,5 @@ class thumbor (
     $cfg_path = $config_dir
   }
 
-  anchor { 'thumbor::begin': }
-  -> class { 'thumbor::python': }
-  -> class { 'thumbor::user': }
-  -> class { 'thumbor::upgrade': }
-  -> class { 'thumbor::install': }
-  -> class { 'thumbor::config': }
-  -> class { 'thumbor::service': }
-  -> anchor { 'thumbor::end': }
+  include(['thumbor::python', 'thumbor::user', 'thumbor::upgrade', 'thumbor::install', 'thumbor::config', 'thumbor::service'])
 }

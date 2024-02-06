@@ -7,12 +7,10 @@ describe 'thumbor' do
       context 'with default parameters' do
         it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_class('thumbor') }
-        it { is_expected.to contain_anchor('thumbor::begin') }
         it { is_expected.to contain_class('thumbor::install') }
         it { is_expected.to contain_class('thumbor::config') }
         it { is_expected.to contain_class('thumbor::python') }
         it { is_expected.to contain_class('thumbor::service') }
-        it { is_expected.to contain_anchor('thumbor::end') }
         it { is_expected.to contain_class('python') }
         it { is_expected.not_to contain_python_pyvenv('python') }
 

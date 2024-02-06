@@ -1,7 +1,7 @@
 # @summary Install packages and dependencies for Thumbor
 # @api private
 class thumbor::install {
-  anchor { 'thumbor::install::begin': }
+  require(['thumbor::python', 'thumbor::user', 'thumbor::upgrade'])
 
   if $thumbor::manage_epel and $facts['os']['family'] == 'RedHat' {
     require epel
@@ -15,14 +15,9 @@ class thumbor::install {
       owner   => $thumbor::user,
       group   => $thumbor::group,
       require => Class['python'],
-      before  => Anchor['thumbor::install::virtualenv'],
+      before  => [Python::Pip[$thumbor::package_name], Python::Pip[[$thumbor::plugins]]],
     }
   }
-  anchor { 'thumbor::install::virtualenv':
-    require => Anchor['thumbor::install::begin'],
-    before  => Anchor['thumbor::install::end'],
-  }
-
   ensure_packages($thumbor::additional_packages)
 
   $venv = $thumbor::venv_path ? {
@@ -35,11 +30,7 @@ class thumbor::install {
     virtualenv   => $venv,
     pip_provider => $thumbor::pip_provider,
     proxy        => $thumbor::pip_proxyserver,
-    require      => [
-      Package[$thumbor::additional_packages],
-      Anchor['thumbor::install::virtualenv'],
-    ],
-    before       => Anchor['thumbor::install::end'],
+    require      => Package[$thumbor::additional_packages],
     notify       => Class['thumbor::service'],
   }
 
@@ -48,13 +39,7 @@ class thumbor::install {
     virtualenv   => $venv,
     pip_provider => $thumbor::pip_provider,
     proxy        => $thumbor::pip_proxyserver,
-    require      => [
-      Package[$thumbor::additional_packages],
-      Anchor['thumbor::install::virtualenv'],
-    ],
-    before       => Anchor['thumbor::install::end'],
+    require      => Package[$thumbor::additional_packages],
     notify       => Class['thumbor::service'],
   }
-
-  anchor { 'thumbor::install::end': }
 }
