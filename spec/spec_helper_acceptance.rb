@@ -5,8 +5,6 @@ require 'puppet_litmus'
 include PuppetLitmus
 PuppetLitmus.configure!
 
-require 'spec_helper_acceptance_local' if File.file?(File.join(File.dirname(__FILE__), 'spec_helper_acceptance_local.rb'))
-
 if ENV['TARGET_HOST'].nil? || ENV['TARGET_HOST'] == 'localhost'
   puts 'Running tests against this machine !'
   if Gem.win_platform?
@@ -52,6 +50,7 @@ else
                                 else
                                   Net::SSH::Verifiers::Null.new
                                 end
+    # rubocop:enable Metrics/BlockNesting
     host = if ENV['TARGET_HOST'].include?(':')
              ENV['TARGET_HOST'].split(':').first
            else
@@ -80,3 +79,5 @@ else
     Specinfra.configuration.winrm = winrm
   end
 end
+
+require 'spec_helper_acceptance_local' if File.file?(File.join(File.dirname(__FILE__), 'spec_helper_acceptance_local.rb'))
