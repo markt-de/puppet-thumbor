@@ -25,7 +25,7 @@ describe 'thumbor' do
       end
 
       context 'when setting security_key' do
-        let :params do
+        let(:params) do
           {
             security_key: 'AAAAABBBBCCCCC111112222233333'
           }
@@ -36,7 +36,7 @@ describe 'thumbor' do
       end
 
       context 'when setting config' do
-        let :params do
+        let(:params) do
           {
             config: {
               AUTO_WEBP: true,
@@ -52,7 +52,7 @@ describe 'thumbor' do
       end
 
       context 'when setting ports' do
-        let :params do
+        let(:params) do
           {
             ports: ['8000', '8001', '8002']
           }
@@ -66,7 +66,7 @@ describe 'thumbor' do
       end
 
       context 'when declaring manage_python is false' do
-        let :params do
+        let(:params) do
           {
             manage_python: false
           }
@@ -77,7 +77,7 @@ describe 'thumbor' do
       end
 
       context 'when setting venv_path' do
-        let :params do
+        let(:params) do
           {
             venv_path: '/opt/thumbor_venv',
             manage_python: true,
