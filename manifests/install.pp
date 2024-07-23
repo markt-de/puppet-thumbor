@@ -18,7 +18,7 @@ class thumbor::install {
       before  => [Python::Pip[$thumbor::package_name], Python::Pip[[$thumbor::plugins]]],
     }
   }
-  ensure_packages($thumbor::additional_packages)
+  stdlib::ensure_packages($thumbor::additional_packages)
 
   $venv = $thumbor::venv_path ? {
     undef   => 'system',

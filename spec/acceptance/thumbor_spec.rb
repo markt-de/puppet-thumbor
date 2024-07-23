@@ -5,10 +5,10 @@ describe 'thumbor' do
     apply_manifest(%(
       # be_listening() tests will fail if `ss` is not installed.
       if ($facts['os']['family'] == 'RedHat') and (versioncmp($facts['os']['release']['major'], '8') >= 0) {
-        ensure_packages('iproute')
+        stdlib::ensure_packages('iproute')
       }
       # cURL is needed to send requests to Thumbor
-      ensure_packages('curl')
+      stdlib::ensure_packages('curl')
     ), catch_failures: true)
   end
   context 'with default parameters' do
