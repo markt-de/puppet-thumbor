@@ -31,8 +31,8 @@ describe 'thumbor' do
           }
         end
 
-        it { is_expected.to contain_file('/etc/thumbor.key').with(mode: '0600') }
-        it { is_expected.to contain_file('/etc/thumbor.key').with_content(%r{AAAAABBBBCCCCC111112222233333}) }
+        it { is_expected.to contain_file('/opt/thumbor/thumbor.key').with(mode: '0600') }
+        it { is_expected.to contain_file('/opt/thumbor/thumbor.key').with_content(%r{AAAAABBBBCCCCC111112222233333}) }
       end
 
       context 'when setting config' do
@@ -46,9 +46,9 @@ describe 'thumbor' do
           }
         end
 
-        it { is_expected.to contain_file('/etc/thumbor.conf').with_content(%r{AUTO_WEBP = True}) }
-        it { is_expected.to contain_file('/etc/thumbor.conf').with_content(%r{ENGINE_THREADPOOL_SIZE = 4}) }
-        it { is_expected.to contain_file('/etc/thumbor.conf').with_content(%r{HTTP_LOADER_MAX_CLIENTS = 1024}) }
+        it { is_expected.to contain_file('/opt/thumbor/thumbor.conf').with_content(%r{AUTO_WEBP = True}) }
+        it { is_expected.to contain_file('/opt/thumbor/thumbor.conf').with_content(%r{ENGINE_THREADPOOL_SIZE = 4}) }
+        it { is_expected.to contain_file('/opt/thumbor/thumbor.conf').with_content(%r{HTTP_LOADER_MAX_CLIENTS = 1024}) }
       end
 
       context 'when setting ports' do
@@ -63,17 +63,6 @@ describe 'thumbor' do
           it { is_expected.to contain_service('thumbor@8001') }
           it { is_expected.to contain_service('thumbor@8002') }
         end
-      end
-
-      context 'when declaring manage_python is false' do
-        let(:params) do
-          {
-            manage_python: false
-          }
-        end
-
-        it { is_expected.to contain_class('thumbor::python') }
-        it { is_expected.not_to contain_class('python') }
       end
 
       context 'when setting venv_path' do

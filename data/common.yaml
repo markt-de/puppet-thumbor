@@ -31,4 +31,4 @@ thumbor::statefile: 'thumbor.version'
 thumbor::update_enabled: true
 thumbor::user: 'thumbor'
 thumbor::version: 'present'
-thumbor::venv_path: ~
+thumbor::venv_path: /opt/thumbor
