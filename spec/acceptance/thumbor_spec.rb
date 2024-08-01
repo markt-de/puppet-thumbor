@@ -33,7 +33,7 @@ describe 'thumbor' do
 
     it 'responds to requests' do
       # Thumbor may take a while to start up
-      sleep(5)
+      sleep(15)
       # Use the test image from Thumbor's documentation
       run_shell('curl -v http://localhost:8000/unsafe/300x200/https%3A%2F%2Fgithub.com%2Fthumbor%2Fthumbor%2Fraw%2Fmaster%2Fexample.jpg --output /dev/null') do |r|
         expect(r.stderr).to match(%r{200 OK})
