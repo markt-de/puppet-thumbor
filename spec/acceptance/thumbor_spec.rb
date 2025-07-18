@@ -3,7 +3,9 @@ require 'spec_helper_acceptance'
 describe 'thumbor' do
   before(:all) do
     apply_manifest(%(
-      # be_listening() tests will fail if `ss` is not installed.
+      if ($facts['os']['family'] == 'RedHat') and (versioncmp($facts['os']['release']['major'], '8') == 0) {
+        stdlib::ensure_packages('python38')
+      }
       if ($facts['os']['family'] == 'RedHat') and (versioncmp($facts['os']['release']['major'], '8') >= 0) {
         stdlib::ensure_packages('iproute')
       }
@@ -28,6 +30,7 @@ describe 'thumbor' do
     end
 
     describe port(8000) do
+      # be_listening() tests will fail if `ss` is not installed.
       it { is_expected.to be_listening }
     end
 

@@ -6,4 +6,4 @@ is_pe: false
 
 # XXX: This is required for unit tests, because the
 # pyvenv defined type requires a valid python version.
-python3_version: '3.8.12'
+python3_version: '3.8.17'
