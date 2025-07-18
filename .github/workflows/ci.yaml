@@ -39,7 +39,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ['rocky8', 'ub2004', 'ub2204', 'ub2404', 'deb11', 'deb12']
+        os: ['rocky8', 'rocky9', 'ub2204', 'ub2404', 'deb11', 'deb12']
         puppet_version: [8]
 
     name: Acceptance / ${{ matrix.os }} / Puppet ${{ matrix.puppet_version }}
