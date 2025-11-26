@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v3.0.0] - 2025-11-26
+
+### Changed
+* Install thumbor into a virtual environment per default
+* Remove legacy anchor resources
+* Convert template from ERB to EPP
+* Update OS support and module dependencies
+* Add dependency marktlib
+* Update PDK to 3.4
+* Unify CI workflow, improve tests
+
 ## [v2.3.0] - 2023-07-25
 
 ### Changed
@@ -89,7 +100,8 @@ but also introduces some breaking changes.
 ## v1.0.0 - 2019-10-23
 Initial release before forking the module
 
-[Unreleased]: https://github.com/markt-de/puppet-thumbor/compare/v2.3.0...HEAD
+[Unreleased]: https://github.com/markt-de/puppet-thumbor/compare/v3.0.0...HEAD
+[v3.0.0]: https://github.com/markt-de/puppet-thumbor/compare/v2.3.0...v3.0.0
 [v2.3.0]: https://github.com/markt-de/puppet-thumbor/compare/v2.2.0...v2.3.0
 [v2.2.0]: https://github.com/markt-de/puppet-thumbor/compare/v2.1.1...v2.2.0
 [v2.1.1]: https://github.com/markt-de/puppet-thumbor/compare/v2.1.0...v2.1.1
